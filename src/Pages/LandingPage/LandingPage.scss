@@ -1,8 +1,8 @@
 @use "../../Styles/Partials/breakpoints" as *;
 @use "../../Styles/Partials/colors" as *;
 
-// main img for mobile
-.main {
+// landing img for mobile
+.landing {
   &__img {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
       url(../../Assets/Images/timothy-eberly-7MRajrPiTqw-unsplash.jpg);
@@ -52,9 +52,9 @@
   }
 }
 
-// Main img for tablet
+// Landing img for tablet
 // @include medium {
-//   .main {
+//   .landing {
 //     &__img {
 //       height: 80vh;
 //     }
@@ -78,7 +78,7 @@
 // }
 
 // @include large {
-//   .main {
+//   .landing {
 //     &__img {
 //       height: 100vh;
 //     }
