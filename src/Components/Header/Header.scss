@@ -1,0 +1,34 @@
+@use "../../Styles/Partials/breakpoints" as *;
+@use "../../Styles/Partials/colors" as *;
+
+// Header for mobile
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    &__title {
+        margin: 1rem 0;
+    }
+    &__bars {
+        padding-top: 1rem;
+        align-self: center;
+         font-size: 2rem;
+       color: $black;
+    }
+}
+
+// Header form for tablet
+@include medium {
+    .header {
+        padding: 0 3rem;
+    }
+
+}
+
+// Header form for Desktop
+@include medium {
+    .header {
+        padding: 0 5rem;
+    }
+
+}

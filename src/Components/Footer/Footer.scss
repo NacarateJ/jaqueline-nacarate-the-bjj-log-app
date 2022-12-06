@@ -1,2 +1,33 @@
 @use "../../Styles/Partials/breakpoints" as *;
 @use "../../Styles/Partials/colors" as *;
+
+
+// Footer for mobile
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: rgb(0 0 0 / 8%) 0 -1px;
+    border-top: 1px solid $mercury;
+    // padding: 1rem 0;
+   &__label {
+    display: flex;
+justify-content: center;
+   }
+
+    &__icons {
+        display: flex;
+        justify-content: center;
+       font-size: 2rem;
+       color: $black;
+       gap:1.5rem;
+    }
+
+}
+
+// Footer form for tablet
+@include medium {
+    .footer {
+     flex-direction: row;
+    }
+}
