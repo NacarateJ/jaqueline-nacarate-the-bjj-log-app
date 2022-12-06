@@ -1,13 +1,17 @@
 import "./Styles/Global.scss"
 import "./App.css";
-import HomePage from "./Pages/HomePage/HomePage"
-import Header from "./Components/Header/Header"
-import Footer from "./Components/Footer/Footer"
+import Header from "./Components/Header/Header";
+import MainPage from "./Pages/MainPage/MainPage";
+import LoginForm from "./Pages/LoginForm/LoginForm";
+import HomePage from "./Pages/HomePage/HomePage";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
   return (
     <div className="container">
       <Header />
+     <MainPage  /> 
+      {/* <LoginForm /> */}
       <HomePage />
       <Footer />
     </div>
