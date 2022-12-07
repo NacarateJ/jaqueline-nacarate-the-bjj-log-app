@@ -1,19 +1,24 @@
-import "./Styles/Global.scss"
+import React from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import "./Styles/Global.scss";
 import "./App.css";
 import Header from "./Components/Header/Header";
-import LangingPage from "./Pages/LandingPage/LandingPage";
-import LoginForm from "./Pages/LoginForm/LoginForm";
+import LandingPage from "./Pages/LandingPage/LandingPage";
 import HomePage from "./Pages/HomePage/HomePage";
 import Footer from "./Components/Footer/Footer";
 
 function App() {
   return (
     <div className="container">
-      <Header />
-     <LandingPage  /> 
-      {/* <LoginForm /> */}
-      <HomePage />
-      <Footer />
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="*" element={<HomePage />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import HeroVid from "./HeroVid.scss";
+import "./HeroVid.scss";
 import React from "react";
 
 const HeroVid = () => {
