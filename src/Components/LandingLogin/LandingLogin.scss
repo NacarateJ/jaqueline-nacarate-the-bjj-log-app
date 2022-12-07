@@ -1,21 +1,11 @@
 @use "../../Styles/Partials/breakpoints" as *;
 @use "../../Styles/Partials/colors" as *;
 
+
+
 // Login form for mobile
 .login {
   width: 100%;
-
-  &__image {
-  background: linear-gradient(rgba(50, 50, 50, 0.5), rgba(50, 50, 50, 0.5)), url("../../Assets/Images/timothy-eberly-7MRajrPiTqw-unsplash.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  max-width: 100%;
-  height: auto;
-    // position: relative;
-    // padding: 0;
-    // width: 100%;
-  }
 
   &__form-container {
     // position: absolute;
