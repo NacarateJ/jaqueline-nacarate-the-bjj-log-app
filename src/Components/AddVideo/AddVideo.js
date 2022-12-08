@@ -1,7 +1,7 @@
 import "./AddVideo.scss";
 import React from "react";
 
-const AddVideo = ({ handleSubmit, users }) => {
+const AddVideo = ({ handleSubmit, handleVideo, users }) => {
   return (
     <form
       className="add-form"
@@ -26,7 +26,7 @@ const AddVideo = ({ handleSubmit, users }) => {
           type="file"
           name="video"
           accept="video/*"
-          // onChange={handleVideo}
+          onChange={handleVideo}
         />
         <video></video>
       </label>

@@ -32,7 +32,7 @@ const VideoGallery = ({
               <input
                 type="text"
                 name="techniqueName"
-                defaultValue={video.techniqueName}
+                defaultValue={video.technique_name}
                 disabled={editVideoId !== video.id}
               />
               <input
@@ -61,7 +61,6 @@ const VideoGallery = ({
                   >
                     <ImCancelCircle />
                   </button>
-               
                 </>
               ) : (
                 <button
