@@ -3,7 +3,12 @@ import React from "react";
 
 const AddVideo = ({ handleSubmit, users }) => {
   return (
-    <form className="add-form" onSubmit={handleSubmit} autoComplete="off">
+    <form
+      className="add-form"
+      onSubmit={handleSubmit}
+      autoComplete="off"
+      encType="multipart/form-data"
+    >
       <h1>UPLOAD YOUR VIDEO</h1>
       <label htmlFor="techniqueName">
         Technique Name
@@ -17,7 +22,13 @@ const AddVideo = ({ handleSubmit, users }) => {
 
       <label htmlFor="video">
         Video
-        <input type="file" name="file" />
+        <input
+          type="file"
+          name="video"
+          accept="video/*"
+          // onChange={handleVideo}
+        />
+        <video></video>
       </label>
 
       {/* <label htmlFor="userID">
