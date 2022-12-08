@@ -1,3 +1,65 @@
 @use "../../Styles/Partials/breakpoints" as *;
 @use "../../Styles/Partials/colors" as *;
 
+// landing img for mobile
+.home {
+    background-image: linear-gradient(rgba(50, 50, 50, 0.5), rgba(50, 50, 50, 0.5)),
+      url(../../Assets/Images/timothy-eberly-7MRajrPiTqw-unsplash.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // position: relative;
+    width: 100%;
+    // height: 30vh;
+  
+
+  &__header {
+    &--hide{
+      display: none;
+    }
+  }
+
+  &__login {
+    display: none;
+    &--show {
+      display: flex;
+    }
+  }
+
+}
+
+// Landing img for tablet
+// @include medium {
+//   .landing {
+//     &__img {
+//       height: 80vh;
+//     }
+//     &__text {
+      // font-size: 1.5rem;
+    //   display: flex;
+    //   justify-content: center;
+    //   align-items: center;
+      // text-align: center;
+//     }
+//     &__caption {
+//       margin: 0 0 2rem 0;
+//     }
+
+//     &__button {
+//       font-size: 1.2rem;
+//       width: 10rem;
+//       height: 4rem;
+//     }
+//   }
+// }
+
+// @include large {
+//   .landing {
+//     &__img {
+//       height: 100vh;
+//     }
+//   }
+// }

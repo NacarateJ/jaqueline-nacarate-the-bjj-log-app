@@ -2,8 +2,15 @@
 @use "../../Styles/Partials/colors" as *;
 
 
- .cancel {
+.user {
     &--hide{
       display: none;
+    }
+  }
+
+  .upload {
+    display: none;
+    &--show {
+      display: flex;
     }
   }

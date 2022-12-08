@@ -1,10 +1,10 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./Styles/Global.scss";
 import "./App.css";
 import Header from "./Components/Header/Header";
-import LandingPage from "./Pages/LandingPage/LandingPage";
 import HomePage from "./Pages/HomePage/HomePage";
+import ProfilePage from "./Pages/ProfilePage/ProfilePage";
 import Footer from "./Components/Footer/Footer";
 
 function App() {
@@ -13,9 +13,9 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="*" element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="*" element={<ProfilePage />} />
         </Routes>
         <Footer />
       </BrowserRouter>
