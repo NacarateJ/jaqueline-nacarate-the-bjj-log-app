@@ -19,6 +19,7 @@ const ProfilePage = () => {
     setIsUploadHideValid(true);
   };
 
+  const [uploadedVideo, setUploadedVideo] = useState(null);
   const [videos, setVideos] = useState([]);
   // const [newVideo, setnewVideo] = useState(null);
   const [editVideoId, setEditVideoId] = useState(null);
@@ -57,40 +58,44 @@ const ProfilePage = () => {
 
   // ----------------------------------------------------------------------------
 
+  const handleVideo = (e) => {
+    console.log(e.target.files[0]);
+    setUploadedVideo(e.target.files[0]);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const newVideo = {
       technique_name: event.target.techniqueName.value,
       description: event.target.description.value,
-      video: event.target.video.value,
+      video: uploadedVideo,
       user_id: "2c0d90bd-558e-4991-b31a-7d55e162a45d",
     };
 
+    console.log(newVideo);
     const formData = new FormData();
-     formData.append("technique_name", newVideo.technique_name);
-     formData.append("description", newVideo.description);
-     formData.append("video", newVideo.video);
-     formData.append("user_id", newVideo.user_id);
+    formData.append("technique_name", newVideo.technique_name);
+    formData.append("description", newVideo.description);
+    formData.append("video", newVideo.video);
+    formData.append("user_id", newVideo.user_id);
 
     try {
-      const response = await axios.post(
-        `${BACK_END}/videos`,
-        formData,
-        {
+      const response = await axios
+        .post(`${BACK_END}/videos`, formData, {
           headers: {
             "Content-Type": `multipart/form-data`,
           },
-        }).then((response) => {
+        })
+        .then((response) => {
           setVideos([...videos, response.data]);
-        }
-      );
+        });
 
       console.log(response);
     } catch (error) {
       console.log(error);
     }
   };
-// --------------------------------------------------------------------------------
+  // --------------------------------------------------------------------------------
 
   // const handleSubmit = async (event) => {
   //   event.preventDefault();
@@ -107,13 +112,12 @@ const ProfilePage = () => {
   //       "Content-Type": `multipart/form-data`,
   //     },
   //   });
-    
+
   //  } catch (error) {
   //   console.log(error);
   //   window.alert(error);
   //  }
   // }
-
 
   const handleEdit = (event, videoId) => {
     event.preventDefault();
@@ -177,6 +181,7 @@ const ProfilePage = () => {
         <div>
           <AddVideo
             handleSubmit={handleSubmit}
+            handleVideo={handleVideo}
             // users={users}
           />
         </div>
