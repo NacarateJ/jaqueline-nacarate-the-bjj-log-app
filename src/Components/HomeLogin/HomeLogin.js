@@ -1,9 +1,9 @@
-import "./LandingLogin.scss";
+import "./HomeLogin.scss";
 import React from "react";
+import { Link } from "react-router-dom";
 
-const LandingLogin = () => {
+const HomeLogin = () => {
   return (
-
     <div className="login">
       <div className="login__form-container">
         <form className="login__form">
@@ -14,11 +14,15 @@ const LandingLogin = () => {
           <label className="login__label">Password</label>
           <input type="password" className="login__box"></input>
           <br />
-          <input className="login__btn" type="submit" value="Login"></input>
+          <Link to="/profile">
+            <button className="login__btn" type="submit" value="">
+              LOGIN
+            </button>
+          </Link>
         </form>
       </div>
     </div>
   );
 };
 
-export default LandingLogin;
+export default HomeLogin;

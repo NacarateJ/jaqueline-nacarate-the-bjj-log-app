@@ -1,32 +1,35 @@
 import "./HomePage.scss";
 import React from "react";
-// import React, { useState } from "react";
-import HeroVid from "../../Components/HeroVid/HeroVid";
-import VideoGallery from "../../Components/VideoGallery/VideoGallery";
-import UserProfile from "../../Components/UserProfile/UserProfile";
-// import { useParams } from "react-router-dom";
-// import { useEffect, useState } from "react";
-// import axios from "axios";
-
-// render components here
-
-const BACK_END = process.env.REACT_APP_BACKEND_URL;
+import { useState } from "react";
+import HomeHeader from "../../Components/HomeHeader/HomeHeader";
+import HomeLogin from "../../Components/HomeLogin/HomeLogin";
 
 const HomePage = () => {
-  // const [heroVideo, setHeroVideo] = useState({});
-  // const [galleryVideos, setGalleryVideos] = useState([]);
+  const [isHeaderShowValid, setIsHeaderShowValid] = useState(true);
+  const [isLoginHideValid, setIsLoginHideValid] = useState(false);
+
+  const handleSignIn = (event) => {
+    event.preventDefault();
+    setIsHeaderShowValid(false);
+    setIsLoginHideValid(true);
+  };
 
   return (
-    <section className="home">
-      <div className="profile">
-        <UserProfile />
-      </div>
+    <main className="home">
+      <section
+        className={`home__header
+            ${isHeaderShowValid ? "" : "home__header--hide"} `}
+      >
+        <HomeHeader handleSignIn={handleSignIn} />
+      </section>
 
-      <div className="videos">
-        <HeroVid />
-        <VideoGallery />
-      </div>
-    </section>
+      <section
+        className={`home__login 
+            ${!isLoginHideValid ? "" : "home__login--show"} `}
+      >
+        <HomeLogin />
+      </section>
+    </main>
   );
 };
 

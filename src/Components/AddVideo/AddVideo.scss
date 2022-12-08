@@ -2,8 +2,6 @@
 @use "../../Styles/Partials/colors" as *;
 
 
- .cancel {
-    &--hide{
-      display: none;
-    }
-  }
+.add-form {
+    background-color: aqua;
+}
