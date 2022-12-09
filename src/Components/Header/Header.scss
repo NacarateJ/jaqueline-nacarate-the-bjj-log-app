@@ -3,32 +3,37 @@
 
 // Header for mobile
 .header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+   box-shadow: rgb(0 0 0 / 8%) 0 -1px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
+  &__logo {
+    align-self: center;
+    width: 10rem;
+    height: 3rem;
+  }
+
+  &__bars {
     display: flex;
-    justify-content: space-between;
-    padding: 0 1rem;
-    &__title {
-        margin: 1rem 0;
-    }
-    &__bars {
-        padding-top: 1rem;
-        align-self: center;
-         font-size: 2rem;
-       color: $black;
-    }
+    align-items: center;
+    font-size: 2rem;
+    color: $black;
+  }
 }
 
 // Header form for tablet
 @include medium {
-    .header {
-        padding: 0 3rem;
-    }
-
+  .header {
+    padding: 1rem 2rem;
+  }
 }
 
 // Header form for Desktop
-@include medium {
-    .header {
-        padding: 0 5rem;
-    }
-
+@include large {
+  .header {
+    padding: 1rem 3rem;
+  }
 }
+
