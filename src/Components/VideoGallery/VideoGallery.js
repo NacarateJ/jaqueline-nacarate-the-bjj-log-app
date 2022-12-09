@@ -22,6 +22,8 @@ const VideoGallery = ({
 
   return (
     <div className="container">
+      
+
       {videos.map((video) => {
         return (
           <div key={video.id}>
@@ -42,17 +44,23 @@ const VideoGallery = ({
                 defaultValue={video.description}
                 disabled={editVideoId !== video.id}
               />
-              <input
+
+              <video 
+              controls
+              className="video"
+              src={video.video} 
+              ></video>
+              {/* <input
                 type="text"
                 name="video"
                 defaultValue={video.video}
                 disabled={editVideoId !== video.id}
-              />
+              /> */}
               {editVideoId === video.id ? (
                 <>
                   <button
-            //         className={`update
-            // ${isUpdateShowValid ? "" : "update--show"} `}
+                    //         className={`update
+                    // ${isUpdateShowValid ? "" : "update--show"} `}
                     type="submit"
                   >
                     <RxUpdate />
@@ -69,8 +77,8 @@ const VideoGallery = ({
                 </>
               ) : (
                 <button
-            //       className={`edit
-            // ${isEditShowValid ? "" : "edit--show"} `}
+                  //       className={`edit
+                  // ${isEditShowValid ? "" : "edit--show"} `}
                   type="button"
                   onClick={(event) => handleEdit(event, video.id)}
                 >
