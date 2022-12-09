@@ -13,12 +13,13 @@ const VideoGallery = ({
   handleUpdate,
   handleDelete,
 }) => {
-  const [isCancelShowValid, setIsCancelShowValid] = useState(true);
+  const [isCancelShowValid, setIsCancelShowValid] = useState(false);
 
   const handleCancel = (event) => {
     event.preventDefault();
-    setIsCancelShowValid(false);
+    setIsCancelShowValid(true);
   };
+
   return (
     <div className="container">
       {videos.map((video) => {
@@ -49,7 +50,11 @@ const VideoGallery = ({
               />
               {editVideoId === video.id ? (
                 <>
-                  <button type="submit">
+                  <button
+            //         className={`update
+            // ${isUpdateShowValid ? "" : "update--show"} `}
+                    type="submit"
+                  >
                     <RxUpdate />
                   </button>
 
@@ -64,6 +69,8 @@ const VideoGallery = ({
                 </>
               ) : (
                 <button
+            //       className={`edit
+            // ${isEditShowValid ? "" : "edit--show"} `}
                   type="button"
                   onClick={(event) => handleEdit(event, video.id)}
                 >

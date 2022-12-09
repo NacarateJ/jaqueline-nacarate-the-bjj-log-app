@@ -1,9 +1,22 @@
 @use "../../Styles/Partials/breakpoints" as *;
 @use "../../Styles/Partials/colors" as *;
 
-
- .cancel {
-    &--hide{
-      display: none;
-    }
+.cancel {
+  display: none;
+  &--hide {
+    display: flex;
   }
+}
+
+// .edit {
+//   &--show {
+//     display: flex;
+//   }
+// }
+
+// .update {
+//   display: none;
+//   &--show {
+//     display: flex;
+//   }
+// }

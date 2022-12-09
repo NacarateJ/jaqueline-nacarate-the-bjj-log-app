@@ -21,7 +21,6 @@ const ProfilePage = () => {
 
   const [uploadedVideo, setUploadedVideo] = useState(null);
   const [videos, setVideos] = useState([]);
-  // const [newVideo, setnewVideo] = useState(null);
   const [editVideoId, setEditVideoId] = useState(null);
   // const [users, setUsers] = useState([]);
 
@@ -58,9 +57,9 @@ const ProfilePage = () => {
 
   // ----------------------------------------------------------------------------
 
-  const handleVideo = (e) => {
-    console.log(e.target.files[0]);
-    setUploadedVideo(e.target.files[0]);
+  const handleVideo = (event) => {
+    console.log(event.target.files[0]);
+    setUploadedVideo(event.target.files[0]);
   };
 
   const handleSubmit = async (event) => {
