@@ -2,6 +2,7 @@
 @use "../../Styles/Partials/colors" as *;
 
 
+
 .user {
     &--hide{
       display: none;
@@ -14,3 +15,5 @@
       display: flex;
     }
   }
+
+  
