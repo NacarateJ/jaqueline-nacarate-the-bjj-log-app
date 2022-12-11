@@ -21,94 +21,101 @@ const VideoGallery = ({
   };
 
   return (
-    <div className="container">
-      
+    <>
+      <h3 className="gallery__title"> VIDEO GALLERY</h3>
 
-      {videos.map((video) => {
-        return (
-          <div key={video.id}>
-            <form
-              autoComplete="off"
-              className="container__add-form"
-              onSubmit={(event) => handleUpdate(event, video.id)}
-            >
-              <input
-                type="text"
-                name="techniqueName"
-                defaultValue={video.technique_name}
-                disabled={editVideoId !== video.id}
-              />
-              <input
-                type="text"
-                name="description"
-                defaultValue={video.description}
-                disabled={editVideoId !== video.id}
-              />
+      <div className="gallery">
+        {videos.map((video) => {
+          return (
+            <div key={video.id}>
+              <form
+                className="gallery__form"
+                autoComplete="off"
+                onSubmit={(event) => handleUpdate(event, video.id)}
+              >
+                <div className="gallery__collection">
+                  <video
+                    className="gallery__videos"
+                    src={video.video}
+                    controls
+                  ></video>
 
-              <video 
-              controls
-              className="video"
-              src={video.video} 
-              ></video>
-              {/* <input
+                  {/* <input
                 type="text"
                 name="video"
                 defaultValue={video.video}
                 disabled={editVideoId !== video.id}
               /> */}
-              {editVideoId === video.id ? (
-                <>
-                  <button
-                    //         className={`update
-                    // ${isUpdateShowValid ? "" : "update--show"} `}
-                    type="submit"
-                  >
-                    <RxUpdate />
-                  </button>
 
-                  <button
-                    className={`cancel
+                  <div className="gallery__info-container">
+                    <textarea
+                      className="gallery__info"
+                      type="text"
+                      name="techniqueName"
+                      rows="1"
+                      cols="30"
+                      defaultValue={video.technique_name}
+                      disabled={editVideoId !== video.id}
+                    ></textarea>
+
+                    <textarea
+                      className="gallery__info"
+                      type="text"
+                      name="description"
+                      rows="5"
+                      cols="30"
+                      defaultValue={video.description}
+                      disabled={editVideoId !== video.id}
+                    ></textarea>
+                  </div>
+
+                  <div className="gallery__buttons">
+                    {editVideoId === video.id ? (
+                      <>
+                        <button
+                          className="update"
+                          //         className={`update
+                          // ${isUpdateShowValid ? "" : "update--show"} `}
+                          type="submit"
+                        >
+                          <RxUpdate className="gallery__but-icon" />
+                        </button>
+
+                        <button
+                          className={`cancel
             ${isCancelShowValid ? "" : "cancel--hide"} `}
-                    type="text"
-                    onClick={handleCancel}
-                  >
-                    <ImCancelCircle />
-                  </button>
-                </>
-              ) : (
-                <button
-                  //       className={`edit
-                  // ${isEditShowValid ? "" : "edit--show"} `}
-                  type="button"
-                  onClick={(event) => handleEdit(event, video.id)}
-                >
-                  <BiEditAlt />
-                </button>
-              )}
-              <button onClick={(event) => handleDelete(event, video.id)}>
-                <RiDeleteBin2Line />
-              </button>
-            </form>
-          </div>
-        );
-      })}
-    </div>
+                          type="text"
+                          onClick={handleCancel}
+                        >
+                          <ImCancelCircle className="gallery__but-icon" />
+                        </button>
+                      </>
+                    ) : (
+                      <button
+                        className="edit"
+                        //       className={`edit
+                        // ${isEditShowValid ? "" : "edit--show"} `}
+                        type="button"
+                        onClick={(event) => handleEdit(event, video.id)}
+                      >
+                        <BiEditAlt className="gallery__but-icon" />
+                      </button>
+                    )}
 
-    // <section className="gallery">
-    //   <div>
-    //     <h3 className="gallery__title"> VIDEO GALLERY</h3>
-    //   </div>
-
-    //   <div className="gallery__wrapper">
-    //     <div className="gallery__video-wrapper">
-    //       <video className="gallery__video"></video>
-    //     </div>
-
-    //     <div className="gallery__text-wrapper">
-    //       <p className="gallery__text"></p>
-    //     </div>
-    //   </div>
-    // </section>
+                    <button
+                      className="delete"
+                      onClick={(event) => handleDelete(event, video.id)}
+                    >
+                      <RiDeleteBin2Line className="gallery__but-icon" />
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          );
+        })}
+      </div>
+    </>
   );
 };
 

@@ -4,18 +4,18 @@ import { Link } from "react-router-dom";
 
 const HomeLogin = () => {
   return (
-    <div className="login">
-      <div className="login__form-container">
-        <form className="login__form">
-          <h1 className="login__text">Log In</h1>
-          <label className="login__label">Username</label>
-          <input type="text" className="login__box"></input>
+    <div className="form-login">
+      <div className="form__container">
+        <form className="form__form">
+          <h1 className="form__text">Log In</h1>
+          <label className="form__label">Username</label>
+          <input type="text" className="form__box"></input>
           <br />
-          <label className="login__label">Password</label>
-          <input type="password" className="login__box"></input>
+          <label className="form__label">Password</label>
+          <input type="password" className="form__box"></input>
           <br />
           <Link to="/profile">
-            <button className="login__btn" type="submit" value="">
+            <button className="form__btn" type="submit" value="">
               LOGIN
             </button>
           </Link>

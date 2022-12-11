@@ -5,31 +5,70 @@ import UserProfile from "../../Components/UserProfile/UserProfile";
 import AddVideo from "../../Components/AddVideo/AddVideo";
 import HeroVid from "../../Components/HeroVid/HeroVid";
 import VideoGallery from "../../Components/VideoGallery/VideoGallery";
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const BACK_END = process.env.REACT_APP_BACKEND_URL;
 
 const ProfilePage = () => {
+  const params = useParams();
+  // States to hide and show user's profile page and form to upload new video
   const [isUserShowValid, setIsUserShowValid] = useState(true);
   const [isUploadHideValid, setIsUploadHideValid] = useState(false);
 
+  // State to upload a new video
+  const [uploadedVideo, setUploadedVideo] = useState(null);
+
+  // State for all the videos
+  const [videos, setVideos] = useState([]);
+
+  // State to edit videos
+  const [editVideoId, setEditVideoId] = useState(null);
+
+
+  // State for hero video
+   const [videoDetails, setVideoDetails] = useState({});
+   const [videoId, setVideoId] = useState();
+
+  // State for users
+  // const [users, setUsers] = useState([]);
+
+
+
+  // Functio to hide and show user's profile page and form to upload new video
   const handleUpload = (event) => {
     event.preventDefault();
     setIsUserShowValid(false);
     setIsUploadHideValid(true);
   };
 
-  const [uploadedVideo, setUploadedVideo] = useState(null);
-  const [videos, setVideos] = useState([]);
-  const [editVideoId, setEditVideoId] = useState(null);
-  // const [users, setUsers] = useState([]);
+  // Function to upload new video
+  const handleVideo = (event) => {
+    console.log(event.target.files[0]);
+    setUploadedVideo(event.target.files[0]);
+  };
 
+// Function to edit videos
+ const handleEdit = (event, videoId) => {
+   event.preventDefault();
+   setEditVideoId(videoId);
+ };
+
+
+// Getting all videos
   useEffect(() => {
+    const videoId = params.videoId;
+
     const fetchVideos = async () => {
-      const { data } = await axios.get(`${BACK_END}/videos`);
-      setVideos(data);
+      try {
+        const { data } = await axios.get(`${BACK_END}/videos`);
+        const videos = data.filter((video) => video.id !== videoId);
+        setVideos(videos);
+      } catch (error) {
+        console.log("Error", error);
+      }
     };
-    // console.log(data);
+
+    console.log("videos", videos);
 
     // const fetchUsers = async () => {
     //   const { data } = await axios.get(`${BACK_END}/users`);
@@ -38,30 +77,39 @@ const ProfilePage = () => {
 
     fetchVideos();
     // fetchUsers();
-  }, []);
+  }, [params.videoId]);
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const newVideo = {
-  //     technique_name: event.target.techniqueName.value,
-  //     description: event.target.description.value,
-  //     video: event.target.video.value,
-  //     user_id: event.target.userId.value,
-  //   };
 
-  //   axios.post(`${BACK_END}/videos`, newVideo).then((response) => {
-  //     setVideos([...videos, response.data]);
-  //   });
-  //   event.target.reset();
-  // };
+  // useEffect(() => {
+  //     if (params.videoId) {
+  //       const videoId = params.videoId;
+  //       setVideoId(params.videoId);
+  //       heroVideoId(videoId);
+  //     } else {
+  //       const defaultVideoId = `${BACK_END}/videos/${videoId}`;
+  //       setVideoId(defaultVideoId);
+  //       heroVideoId(defaultVideoId);
+  //     }
 
-  // ----------------------------------------------------------------------------
 
-  const handleVideo = (event) => {
-    console.log(event.target.files[0]);
-    setUploadedVideo(event.target.files[0]);
-  };
+        // function heroVideoId(videoId) {
+        // const heroVid = `${BACK_END}/videos/${videoId}`;
+        // const fetchData = async () => {
+        //   try {
+        //     const { data } = await axios.get(heroVid);
+        //     setVideoDetails(data);
+        //   } catch (error) {
+        //     console.log("Error", error)
+        //   }
+        // };
+        // fetchData();
+      // }
 
+    
+  // }, [params.videoId, videoId]);
+
+
+  // Posting new Video
   const handleSubmit = async (event) => {
     event.preventDefault();
     const newVideo = {
@@ -94,34 +142,8 @@ const ProfilePage = () => {
       console.log(error);
     }
   };
-  // --------------------------------------------------------------------------------
 
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-
-  // const formData = new FormData();
-  //  formData.append("technique_name", newVideo.technique_name);
-  //  formData.append("description", newVideo.description);
-  //  formData.append("video", newVideo);
-  //  formData.append("user_id", newVideo.userId);
-
-  //  try {
-  //   await axios.post(`${BACK_END}/videos`, formData, {
-  //     headers: {
-  //       "Content-Type": `multipart/form-data`,
-  //     },
-  //   });
-
-  //  } catch (error) {
-  //   console.log(error);
-  //   window.alert(error);
-  //  }
-  // }
-
-  const handleEdit = (event, videoId) => {
-    event.preventDefault();
-    setEditVideoId(videoId);
-  };
+ 
 
   const handleUpdate = (event, videoId) => {
     event.preventDefault();
@@ -149,6 +171,7 @@ const ProfilePage = () => {
 
   return (
     <div className="container">
+      {/* User profile page with video gallery */}
       <section
         className={`user
             ${isUserShowValid ? "" : "user--hide"} `}
@@ -158,11 +181,12 @@ const ProfilePage = () => {
         </div>
 
         <button type="text" onClick={handleUpload}>
-          UPLOAD
+          UPLOAD VIDEO
         </button>
 
         <div className="videos">
-          <HeroVid />
+          <HeroVid 
+          videos={videos}/>
           <VideoGallery
             videos={videos}
             handleEdit={handleEdit}
@@ -173,6 +197,7 @@ const ProfilePage = () => {
         </div>
       </section>
 
+      {/* Upload form to upload new video */}
       <section
         className={`upload 
             ${!isUploadHideValid ? "" : "upload--show"} `}

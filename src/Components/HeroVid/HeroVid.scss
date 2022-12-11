@@ -1,2 +1,26 @@
 @use "../../Styles/Partials/breakpoints" as *;
 @use "../../Styles/Partials/colors" as *;
+
+// Hero video for mobile
+.hero {
+  &__video {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 100%;
+    aspect-ratio: 16/9;
+  }
+}
+
+// Hero video for tablet
+// @include medium {
+//   .hero {
+//     &__video {
+//       min-height: 100%;
+//       width: 100%;
+//     }
+//   }
+// }
