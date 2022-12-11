@@ -1,0 +1,44 @@
+@use "../../Styles/Partials/breakpoints" as *;
+@use "../../Styles/Partials/colors" as *;
+@use "../../Styles/Partials/buttons" as *;
+@use "../../Styles/Partials/buttons" as *;
+
+// User profile for mobile
+.users {
+  margin: 1rem;
+
+  &__details {
+    display: flex;
+  }
+  &__photo {
+    margin-right: 1rem;
+    object-fit: cover;
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    flex-shrink: 0;
+    border: 4px solid $blue;
+  }
+
+  &__information {
+    align-self: center;
+  }
+
+  &__name {
+    font-weight: 600;
+    margin: 0;
+  }
+
+  &__belt {
+    width: 100%;
+  }
+
+  &__edit-profile {
+    @include btn-theme;
+  }
+
+  &__upload-video {
+    margin-top: 1rem;
+    @include btn-theme;
+  }
+}
