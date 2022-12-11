@@ -1,37 +1,52 @@
-import "./AddVideo.scss";
+import "../HomeLogin/HomeLogin.scss";
 import React from "react";
 
 const AddVideo = ({ handleSubmit, handleVideo, users }) => {
   return (
-    <form
-      className="add-form"
-      onSubmit={handleSubmit}
-      autoComplete="off"
-      encType="multipart/form-data"
-    >
-      <h1>UPLOAD YOUR VIDEO</h1>
-      <label htmlFor="techniqueName">
-        Technique Name
-        <input type="text" name="techniqueName" />
-      </label>
+    <div className="form">
+      <div className="form__container-add">
+        <form
+          className="form__form"
+          onSubmit={handleSubmit}
+          autoComplete="off"
+          encType="multipart/form-data"
+        >
+          <br />
+          <h1 className="form__text">Upload your video</h1>
 
-      <label htmlFor="description">
-        Description
-        <input type="text" name="description" />
-      </label>
+          <label className="form__label" htmlFor="techniqueName">
+            Technique Name
+          </label>
+          <textarea
+            className="form__box"
+            type="text"
+            name="techniqueName"
+            rows="1"
+            cols="30"
+          ></textarea>
+          <br />
+          <label className="form__label" htmlFor="description">
+            Description
+          </label>
+          <textarea
+            className="form__box"
+            type="text"
+            name="description"
+            rows="5"
+            cols="30"
+          ></textarea>
+          <br />
 
-      <label htmlFor="video">
-        Video
-        <input
-          type="file"
-          name="video"
-          accept="video/*"
-          onChange={handleVideo}
-        />
-        <video></video>
-      </label>
+            <input
+              type="file"
+              name="video"
+              accept="video/*"
+              onChange={handleVideo}
+            />
 
-      {/* <label htmlFor="userID">
+          {/* <video></video> */}
+
+          {/* <label htmlFor="userID">
         Users:
         <select name="userID">
           {users.map((user) => (
@@ -41,9 +56,14 @@ const AddVideo = ({ handleSubmit, handleVideo, users }) => {
           ))}
         </select>
       </label> */}
-
-      <button type="submit">Add Video</button>
-    </form>
+          <br />
+          <button className="form__btn" type="submit">
+            Add Video
+          </button>
+          <br />
+        </form>
+      </div>
+    </div>
   );
 };
 

@@ -1,16 +1,20 @@
 @use "../../Styles/Partials/breakpoints" as *;
 @use "../../Styles/Partials/colors" as *;
 
-
-
 // Login form for mobile
-.login {
+.form {
   padding: 0 1rem;
 
-  &__form-container {
-    margin: 0 3rem;
-    padding: 2rem;
+  &__container,
+  &__container-add {
+    padding: 1rem;
     border-radius: 1.25rem;
+  }
+
+  &__container-add {
+    margin: 2rem 0;
+    background-color: black;
+    opacity: 70%;
   }
 
   &__form {
@@ -29,6 +33,7 @@
   }
 
   &__label {
+    font-size: 1rem;
     display: flex;
     justify-content: center;
     color: white;
@@ -44,13 +49,19 @@
     color: white;
     text-align: center;
     &:focus {
-       background: $black;
+      background: $black;
     }
   }
 
+  input[type="file"] {
+    color: white;
+  }
+
+  input::file-selector-button,
   &__btn {
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: 1rem;
     height: 2rem;
     background-color: white;
@@ -64,22 +75,42 @@
       color: white;
     }
   }
+
+  // &__btn {
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   padding: 1rem;
+  //   height: 2rem;
+  //   background-color: white;
+  //   color: black;
+  //   border-radius: 20px;
+  //   border: none;
+  //   font-weight: 700;
+  //   outline: none;
+  //   &:hover {
+  //     background-color: black;
+  //     color: white;
+  //   }
+  // }
 }
 
 // Login form for tablet
 @include medium {
-  .login {
-    padding:8.6rem 0;
+  .form-login {
+    padding: 8.6rem 0;
+  }
 }
+.form {
+  &__container-add {
+    display: flex;
+    justify-content: center;
+  }
 }
-
-
-
 
 // Login form for desktop
 @include large {
-  .login {
+  .form-login {
     padding: 10rem 0;
-    
   }
 }
