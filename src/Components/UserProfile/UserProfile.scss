@@ -33,12 +33,71 @@
     width: 100%;
   }
 
-  &__edit-profile {
+  &__edit-profile, &__upload-video  {
     @include btn-theme;
+     font-size: 1rem;
   }
 
   &__upload-video {
     margin-top: 1rem;
-    @include btn-theme;
+  }
+}
+
+// User profile for tablet
+@include medium {
+  .users {
+    margin-top: 2rem;
+    margin-left: 0;
+    width: 30%;
+
+    &__details {
+      flex-direction: column;
+    }
+
+    &__avatar {
+      display: flex;
+      justify-content: center;
+    }
+
+    &__photo {
+      width: 8rem;
+      height: 8rem;
+      border: 5px solid $blue;
+    }
+
+    &__name {
+      padding-top: 1rem;
+      padding-bottom: 0.4rem;
+      text-align: center;
+    }
+    &__belt {
+      height: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+// User profile for desktop
+@include large {
+  .users {
+    width: 35%;
+
+    &__photo {
+      width: 15rem;
+      height: 15rem;
+    }
+
+    &__name {
+      font-size: 2rem;
+    }
+
+    &__belt {
+      height: 2rem;
+      margin-bottom: 1.3rem;
+    }
+
+     &__edit-profile, &__upload-video  {
+   font-size: 1.5rem;
+  }
   }
 }

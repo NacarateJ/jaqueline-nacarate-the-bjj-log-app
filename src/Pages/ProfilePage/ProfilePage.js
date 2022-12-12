@@ -25,7 +25,7 @@ const ProfilePage = () => {
   const [editVideoId, setEditVideoId] = useState(null);
 
   // State for hero video
-  const [videoDetails, setVideoDetails] = useState({});
+  // const [videoDetails, setVideoDetails] = useState({});
   const [videoId, setVideoId] = useState();
 
   // State for users
@@ -49,6 +49,13 @@ const ProfilePage = () => {
     event.preventDefault();
     setEditVideoId(videoId);
   };
+
+
+  // Function to change hero video
+//   const handlechange = (event) => {
+//     event.preventDefault();
+//     setVideoId(videoId);
+// }
 
   // Getting all videos
   useEffect(() => {
@@ -75,31 +82,33 @@ const ProfilePage = () => {
     // fetchUsers();
   }, [params.videoId]);
 
-  // useEffect(() => {
-  //     if (params.videoId) {
-  //       const videoId = params.videoId;
-  //       setVideoId(params.videoId);
-  //       heroVideoId(videoId);
-  //     } else {
-  //       const defaultVideoId = `${BACK_END}/videos/${videoId}`;
-  //       setVideoId(defaultVideoId);
-  //       heroVideoId(defaultVideoId);
-  //     }
 
-  // function heroVideoId(videoId) {
-  // const heroVid = `${BACK_END}/videos/${videoId}`;
-  // const fetchData = async () => {
-  //   try {
-  //     const { data } = await axios.get(heroVid);
-  //     setVideoDetails(data);
-  //   } catch (error) {
-  //     console.log("Error", error)
-  //   }
-  // };
-  // fetchData();
-  // }
 
-  // }, [params.videoId, videoId]);
+  useEffect(() => {
+    if (params.videoId) {
+      const videoId = params.videoId;
+      setVideoId(params.videoId);
+      heroVideoId(videoId);
+    } else {
+      const defaultVideoId = `${BACK_END}/videos/${videoId}`;
+      setVideoId(defaultVideoId);
+      heroVideoId(defaultVideoId);
+    }
+
+    function heroVideoId(videoId) {
+    const heroVid = `${BACK_END}/videos/${videoId}`;
+    const fetchData = async () => {
+      try {
+        const { data } = await axios.get(heroVid);
+        setVideoId(data);
+      } catch (error) {
+        console.log("Error", error)
+      }
+    };
+    fetchData();
+    }
+  }, [params.videoId]);
+
 
   // Posting new Video
   const handleSubmit = async (event) => {
@@ -166,27 +175,19 @@ const ProfilePage = () => {
         className={`user
             ${isUserShowValid ? "" : "user--hide"} `}
       >
-        <div className="profile">
-          <UserProfile handleUpload={handleUpload} />
+        <div className="head">
+            <UserProfile handleUpload={handleUpload} />
+         
+            <HeroVid videos={videos} />
         </div>
 
-        {/* <button className="new-video" type="text" onClick={handleUpload}>
-          Upload a new video
-        </button> */}
-
-        <div className="main-video">
-          <HeroVid videos={videos} />
-        </div>
-
-        {/* <div className="gallery"> */}
-          <VideoGallery
-            videos={videos}
-            handleEdit={handleEdit}
-            handleUpdate={handleUpdate}
-            handleDelete={handleDelete}
-            editVideoId={editVideoId}
-          />
-        {/* </div> */}
+        <VideoGallery
+          videos={videos}
+          handleEdit={handleEdit}
+          handleUpdate={handleUpdate}
+          handleDelete={handleDelete}
+          editVideoId={editVideoId}
+        />
       </section>
 
       {/* Upload form to upload new video */}

@@ -5,6 +5,7 @@
 // Hero video for mobile
 .hero {
   &__video {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -17,11 +18,20 @@
 }
 
 // Hero video for tablet
-// @include medium {
-//   .hero {
-//     &__video {
-//       min-height: 100%;
-//       width: 100%;
-//     }
-//   }
-// }
+@include medium {
+  .hero {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    &__video {
+      border-radius: 0.5rem;
+    }
+  }
+}
+
+// Hero video for tablet
+@include large {
+  .hero {
+     margin-bottom: 2rem;
+  }
+}

@@ -28,6 +28,7 @@
     margin-left: 1rem;
   }
   &__videos {
+    // box-shadow: 3px 4px 8px 3px rgba(0,0,0,0.28);
     background-size: cover;
     object-fit: cover;
     width: 100%;
@@ -62,10 +63,14 @@
 // Video gallery for tablet
 @include medium {
   .gallery {
-    padding: 2rem;
+    padding: 0 2rem 0 2rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
+
+      &__title {
+    margin-left: 2rem;
+  }
 
     &__collection {
       display: flex;
@@ -74,7 +79,7 @@
     }
       
       &__videos {
-      border-radius: 1rem;
+      border-radius: 0.5rem;
       height: 9rem;
     }
   }
@@ -83,9 +88,20 @@
 // Video gallery for desktop
 @include large {
 .gallery {
-  padding: 3rem;
+   padding: 0 3rem 0 3rem;
+   gap:2rem;
+
+    &__title {
+    margin-left: 3rem;
+    font-size: 2rem;
+  }
   &__videos {
     height: 14rem;
+    padding-bottom: 1rem;
+  }
+
+  &__info, &__but-icon {
+    font-size: 1.5rem;
   }
 }
 }
