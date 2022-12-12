@@ -18,15 +18,16 @@ const ProfilePage = () => {
   // State to upload a new video
   const [uploadedVideo, setUploadedVideo] = useState(null);
 
-  // State for all the videos
-  const [videos, setVideos] = useState([]);
-
   // State to edit videos
   const [editVideoId, setEditVideoId] = useState(null);
 
+  // State for all the videos
+  const [videos, setVideos] = useState([]);
+
   // State for hero video
-  // const [videoDetails, setVideoDetails] = useState({});
-  const [videoId, setVideoId] = useState();
+  const [heroVideo, setHeroVideo] = useState();
+
+  const [allVideos, setAllVideos] = useState([]);
 
   // State for users
   // const [users, setUsers] = useState([]);
@@ -50,28 +51,29 @@ const ProfilePage = () => {
     setEditVideoId(videoId);
   };
 
-
   // Function to change hero video
-//   const handlechange = (event) => {
-//     event.preventDefault();
-//     setVideoId(videoId);
-// }
+    const handleChange = (hero) => {
+      const videos = allVideos.filter((video) => video.id !== hero.id);
+      setVideos(videos);
+      setHeroVideo(hero);
+  }
 
-  // Getting all videos
+  // Getting hero video
   useEffect(() => {
-    const videoId = params.videoId;
+    const videoId = params.videoId || "705b808f-d8a0-4713-a796-8653c5c5952b";
 
     const fetchVideos = async () => {
       try {
         const { data } = await axios.get(`${BACK_END}/videos`);
         const videos = data.filter((video) => video.id !== videoId);
+        const heroVideo = data.find((video) => video.id === videoId);
+        setAllVideos(data);
         setVideos(videos);
+        setHeroVideo(heroVideo);
       } catch (error) {
         console.log("Error", error);
       }
     };
-
-    console.log("videos", videos);
 
     // const fetchUsers = async () => {
     //   const { data } = await axios.get(`${BACK_END}/users`);
@@ -82,32 +84,7 @@ const ProfilePage = () => {
     // fetchUsers();
   }, [params.videoId]);
 
-
-
-  useEffect(() => {
-    if (params.videoId) {
-      const videoId = params.videoId;
-      setVideoId(params.videoId);
-      heroVideoId(videoId);
-    } else {
-      const defaultVideoId = `${BACK_END}/videos/${videoId}`;
-      setVideoId(defaultVideoId);
-      heroVideoId(defaultVideoId);
-    }
-
-    function heroVideoId(videoId) {
-    const heroVid = `${BACK_END}/videos/${videoId}`;
-    const fetchData = async () => {
-      try {
-        const { data } = await axios.get(heroVid);
-        setVideoId(data);
-      } catch (error) {
-        console.log("Error", error)
-      }
-    };
-    fetchData();
-    }
-  }, [params.videoId]);
+  console.log("videos", videos);
 
 
   // Posting new Video
@@ -176,13 +153,14 @@ const ProfilePage = () => {
             ${isUserShowValid ? "" : "user--hide"} `}
       >
         <div className="head">
-            <UserProfile handleUpload={handleUpload} />
-         
-            <HeroVid videos={videos} />
+          <UserProfile handleUpload={handleUpload} />
+
+          {heroVideo && <HeroVid video={heroVideo} />}
         </div>
 
         <VideoGallery
           videos={videos}
+          handleChange={handleChange}
           handleEdit={handleEdit}
           handleUpdate={handleUpdate}
           handleDelete={handleDelete}
