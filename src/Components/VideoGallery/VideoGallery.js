@@ -12,6 +12,7 @@ const VideoGallery = ({
   handleEdit,
   handleUpdate,
   handleDelete,
+  handleChange,
 }) => {
   const [isCancelShowValid, setIsCancelShowValid] = useState(false);
 
@@ -27,7 +28,12 @@ const VideoGallery = ({
       <div className="gallery">
         {videos.map((video) => {
           return (
-            <div key={video.id}>
+            <div
+              key={video.id}
+              onClick={() => {
+                handleChange(video);
+              }}
+            >
               <form
                 className="gallery__form"
                 autoComplete="off"
@@ -37,7 +43,7 @@ const VideoGallery = ({
                   <video
                     className="gallery__videos"
                     src={video.video}
-                    controls
+                    // controls
                   ></video>
 
                   {/* <input
