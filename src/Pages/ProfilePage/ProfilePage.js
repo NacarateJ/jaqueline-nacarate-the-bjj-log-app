@@ -1,5 +1,5 @@
 import "./ProfilePage.scss";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import UserProfile from "../../Components/UserProfile/UserProfile";
 import AddVideo from "../../Components/AddVideo/AddVideo";
@@ -29,6 +29,13 @@ const ProfilePage = () => {
 
   const [allVideos, setAllVideos] = useState([]);
 
+  // State to show new posts
+  const [message, setMessage] = useState("");
+  const [posts, setPosts] = useState([]);
+  const [showNewPost, setShowNewPost] = useState(false);
+
+  const videoRef = useRef();
+
   // State for users
   // const [users, setUsers] = useState([]);
 
@@ -40,7 +47,20 @@ const ProfilePage = () => {
   };
 
   // Function to upload new video
+  // const handleVideo = (event) => {
+  //   console.log(event.target.files[0]);
+  //   setUploadedVideo(event.target.files[0]);
+  // };
+
+  // Function to upload new video
   const handleVideo = (event) => {
+    if (event.target.files[0]) {
+      videoRef.current.src = URL.createObjectURL(event.target.files[0]);
+      videoRef.current.style.display = "block";
+    } else {
+      videoRef.current.src = "";
+      videoRef.current.style.display = "none";
+    }
     console.log(event.target.files[0]);
     setUploadedVideo(event.target.files[0]);
   };
@@ -52,11 +72,11 @@ const ProfilePage = () => {
   };
 
   // Function to change hero video
-    const handleChange = (hero) => {
-      const videos = allVideos.filter((video) => video.id !== hero.id);
-      setVideos(videos);
-      setHeroVideo(hero);
-  }
+  const handleChange = (hero) => {
+    const videos = allVideos.filter((video) => video.id !== hero.id);
+    setVideos(videos);
+    setHeroVideo(hero);
+  };
 
   // Getting hero video
   useEffect(() => {
@@ -84,9 +104,6 @@ const ProfilePage = () => {
     // fetchUsers();
   }, [params.videoId]);
 
-  console.log("videos", videos);
-
-
   // Posting new Video
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -98,6 +115,9 @@ const ProfilePage = () => {
     };
 
     console.log(newVideo);
+
+    setMessage("Loading...");
+
     const formData = new FormData();
     formData.append("technique_name", newVideo.technique_name);
     formData.append("description", newVideo.description);
@@ -116,8 +136,42 @@ const ProfilePage = () => {
         });
 
       console.log(response);
+
+      loadPosts();
+
+      setShowNewPost(false);
+
+      setMessage("Loaded!");
+
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
+
     } catch (error) {
       console.log(error);
+      setMessage("Error loading video.");
+
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
+    }
+  };
+
+  useEffect(() => {
+    loadPosts();
+  }, []);
+
+  const loadPosts = async () => {
+    try {
+      const reload = await axios.get(`${BACK_END}/videos`);
+
+      setPosts(reload.data);
+    } catch (error) {
+      if (error.response) {
+        return setMessage(error.response.data.error);
+      }
+
+      setMessage("Ops, something went wrong. Please try again");
     }
   };
 
@@ -155,30 +209,36 @@ const ProfilePage = () => {
         <div className="head">
           <UserProfile handleUpload={handleUpload} />
 
-          {heroVideo && <HeroVid video={heroVideo} />}
+          {heroVideo && (
+            <HeroVid
+              video={heroVideo}
+              setHeroVideo={setHeroVideo}
+              handleEdit={handleEdit}
+              handleUpdate={handleUpdate}
+              handleDelete={handleDelete}
+              editVideoId={editVideoId}
+            />
+          )}
         </div>
 
-        <VideoGallery
-          videos={videos}
-          handleChange={handleChange}
-          handleEdit={handleEdit}
-          handleUpdate={handleUpdate}
-          handleDelete={handleDelete}
-          editVideoId={editVideoId}
-        />
+        <VideoGallery videos={videos} handleChange={handleChange} />
       </section>
-
       {/* Upload form to upload new video */}
       <section
         className={`upload 
             ${!isUploadHideValid ? "" : "upload--show"} `}
       >
         <div>
+          {/* {showNewPost && ( */}
           <AddVideo
             handleSubmit={handleSubmit}
             handleVideo={handleVideo}
-            // users={users}
+            videoRef={videoRef}
+            // setShowNewPost={setShowNewPost}
+            // loadPosts={loadPosts}
           />
+          {/* // )} */}
+          {/* // users={users} */}
         </div>
       </section>
     </div>
