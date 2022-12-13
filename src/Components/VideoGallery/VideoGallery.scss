@@ -1,29 +1,8 @@
 @use "../../Styles/Partials/breakpoints" as *;
 @use "../../Styles/Partials/colors" as *;
 
-.cancel {
-  display: none;
-  &--hide {
-    display: flex;
-  }
-}
-
-// .edit {
-//   &--show {
-//     display: flex;
-//   }
-// }
-
-// .update {
-//   display: none;
-//   &--show {
-//     display: flex;
-//   }
-// }
-
 // Video gallery for mobile
 .gallery {
-
   &__title {
     margin-left: 1rem;
   }
@@ -35,29 +14,13 @@
     height: 11.25rem;
   }
 
-  &__info-container, &__buttons {
-    margin: 0 1rem;
-  }
-
   &__info {
     width: 100%;
+    padding-top: 1rem;
     background-color: white;
     border: none;
     font-family: "Anek Devanagari";
   }
-
-  &__buttons {
-    display: flex;
-    justify-content: right;
-    padding-bottom: 1rem;
-  }
-}
-.update,
-.cancel,
-.edit,
-.delete {
-  background-color: white;
-  border: none;
 }
 
 // Video gallery for tablet
@@ -68,17 +31,17 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
 
-      &__title {
-    margin-left: 2rem;
-  }
+    &__title {
+      margin-left: 2rem;
+    }
 
     &__collection {
       display: flex;
       flex-direction: column;
       width: 100%;
     }
-      
-      &__videos {
+
+    &__videos {
       border-radius: 0.5rem;
       height: 9rem;
     }
@@ -87,21 +50,22 @@
 
 // Video gallery for desktop
 @include large {
-.gallery {
-   padding: 0 3rem 0 3rem;
-   gap:2rem;
+  .gallery {
+    padding: 0 3rem 0 3rem;
+    gap: 2rem;
 
     &__title {
-    margin-left: 3rem;
-    font-size: 2rem;
-  }
-  &__videos {
-    height: 14rem;
-    padding-bottom: 1rem;
-  }
+      margin-left: 3rem;
+      font-size: 2rem;
+    }
 
-  &__info, &__but-icon {
-    font-size: 1.5rem;
+    &__videos {
+      border-radius: 0.5rem;
+      height: 14rem;
+    }
+
+    &__info {
+      font-size: 1.5rem;
+    }
   }
-}
 }

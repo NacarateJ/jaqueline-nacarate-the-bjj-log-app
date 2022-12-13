@@ -2,8 +2,33 @@
 @use "../../Styles/Partials/colors" as *;
 
 
+.cancel {
+  display: none;
+  &--hide {
+    display: flex;
+  }
+}
+
+// .edit {
+//   &--show {
+//     display: flex;
+//   }
+// }
+
+// .update {
+//   display: none;
+//   &--show {
+//     display: flex;
+//   }
+// }
+
 // Hero video for mobile
 .hero {
+
+  &__video-wrapper {
+    margin-bottom: 1rem;
+  }
+
   &__video {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     background-position: center;
@@ -15,6 +40,32 @@
     min-height: 100%;
     aspect-ratio: 16/9;
   }
+
+    &__info-container, &__buttons {
+    margin: 0 1rem;
+  }
+
+    &__info {
+    width: 100%;
+    background-color: white;
+    border: none;
+    font-family: "Anek Devanagari";
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: right;
+    padding-bottom: 1rem;
+  }
+
+}
+
+.update,
+.cancel,
+.edit,
+.delete {
+  background-color: white;
+  border: none;
 }
 
 // Hero video for tablet
@@ -29,9 +80,13 @@
   }
 }
 
-// Hero video for tablet
+// Hero video for desktop
 @include large {
   .hero {
      margin-bottom: 2rem;
+
+     &__info, &__but-icon {
+    font-size: 1.5rem;
+  }
   }
 }
