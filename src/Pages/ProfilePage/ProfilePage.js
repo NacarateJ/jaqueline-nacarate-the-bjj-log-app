@@ -74,8 +74,9 @@ const ProfilePage = () => {
   // Function to change hero video
   const handleChange = (hero) => {
     const videos = allVideos.filter((video) => video.id !== hero.id);
+    const selectedVideo = allVideos.find((video) => video.id === hero.id);
     setVideos(videos);
-    setHeroVideo(hero);
+    setHeroVideo(selectedVideo);
   };
 
   // Getting hero video
@@ -180,7 +181,7 @@ const ProfilePage = () => {
     const values = {
       technique_name: event.target.techniqueName.value,
       description: event.target.description.value,
-      video: event.target.video.value,
+      // video: event.target.video.value,
     };
     axios.patch(`${BACK_END}/videos/${videoId}`, values).then((response) => {
       const updatedVideos = videos.map((video) =>
