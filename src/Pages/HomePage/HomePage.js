@@ -2,7 +2,7 @@ import "./HomePage.scss";
 import React from "react";
 import { useState } from "react";
 import HomeHeader from "../../Components/HomeHeader/HomeHeader";
-import HomeLogin from "../../Components/HomeLogin/HomeLogin";
+import FormLoginHome from "../../Components/FormLoginHome/FormLoginHome";
 
 const HomePage = () => {
   const [isHeaderShowValid, setIsHeaderShowValid] = useState(true);
@@ -27,7 +27,7 @@ const HomePage = () => {
         className={`home__login 
             ${!isLoginHideValid ? "" : "home__login--show"} `}
       >
-        <HomeLogin />
+        <FormLoginHome />
       </section>
     </main>
   );

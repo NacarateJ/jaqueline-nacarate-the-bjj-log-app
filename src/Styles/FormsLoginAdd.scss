@@ -1,20 +1,13 @@
-@use "../../Styles/Partials/breakpoints" as *;
-@use "../../Styles/Partials/colors" as *;
+@use "./Partials/breakpoints" as *;
+@use "./Partials/colors" as *;
 
 // Login form for mobile
 .form {
-  padding: 0 1rem;
   width: 100%;
   height: 100%;
-  margin: auto;
-  text-align: center;
-  //  display: flex;
-  //   justify-content: center;
 
   &__container,
   &__container-add {
-    //  display: flex;
-    // justify-content: center;
     padding: 1rem;
     border-radius: 1.25rem;
   }
@@ -22,7 +15,6 @@
   &__container-add {
     margin: 2rem 0;
     background-color: black;
-    // opacity: 70%;
   }
 
   &__form {
@@ -41,16 +33,12 @@
   }
 
   &__label {
-    font-size: 1rem;
-    display: flex;
-    justify-content: center;
     color: white;
   }
 
   &__box {
     border: 1px solid white;
     border-radius: 20px;
-    font-weight: 600;
     padding: 0.4rem;
     background: transparent;
     outline: none;
@@ -61,25 +49,17 @@
     }
   }
 
-  // input[type="file"] {
-  //   color: white;
-  // }
-
   input[type="file"] {
-  display: none;
-}
+    display: none;
+  }
 
-  // input::file-selector-button,
-  &__btn, &__label-file {
+  &__btn,
+  &__label-file {
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin: auto;
     padding: 1rem;
     height: 2rem;
     background-color: white;
-    color: black;
     border-radius: 20px;
     border: none;
     font-weight: 700;
@@ -90,10 +70,6 @@
     }
   }
 
-  &__label-file {
-    margin-bottom: 1rem;
-  }
-
   &__new-video {
     background-size: cover;
     object-fit: cover;
@@ -102,51 +78,38 @@
     border-radius: 0.5rem;
     display: none;
   }
-
-  // &__btn {
-  //   display: flex;
-  //   align-items: center;
-  //   justify-content: center;
-  //   padding: 1rem;
-  //   height: 2rem;
-  //   background-color: white;
-  //   color: black;
-  //   border-radius: 20px;
-  //   border: none;
-  //   font-weight: 700;
-  //   outline: none;
-  //   &:hover {
-  //     background-color: black;
-  //     color: white;
-  //   }
-  // }
 }
 
 // Login form for tablet
 @include medium {
   .form-login {
-    padding: 8.6rem 0;
+    margin: 8.6rem 0;
   }
-}
+// }
 // .form {
 //   display: flex;
 //   justify-content: center;
+//   align-items: center;
+//   // margin: 0 auto;
 
 //   &__container-add {
 //     display: flex;
 //     justify-content: center;
+//     align-items: center;
+//     // margin: 0 auto;
 //   }
 
 //   &__form {
 //     display: flex;
 //     justify-content: center;
-
+//     align-items: center;
+//     // margin: 0 auto;
 //   }
-// }
+}
 
 // Login form for desktop
 @include large {
   .form-login {
-    padding: 10rem 0;
+    margin: 10rem 0;
   }
 }
