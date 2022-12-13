@@ -1,33 +1,37 @@
 @use "../../Styles/Partials/breakpoints" as *;
 @use "../../Styles/Partials/colors" as *;
 
+
+// Alert for mobile
 .alert {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 0px;
-  height: 60px;
-  margin: 10px;
+  top: 5rem;
+  right: 0.2rem;
+  width: 0;
+  height: 3.75rem;
+  margin: .4375rem;
   z-index: 9;
   transition: width 0.2s;
-  background-color: red;
+  background-color: rgb(17, 168, 67);
+  border-radius: 0.5rem;
 
   h1 {
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 500;
-    margin: 10px;
-    color: var(--primary);
+    margin: .625rem;
+    color: white;
   }
 
   p {
     position: absolute;
     top: 0;
     right: 0;
-    margin: 0px 5px;
+    margin: 0 .3125rem;
     cursor: pointer;
-    font-size: 20px;
-    :hover {
-      color: var(--white);
+    font-size: 1.25rem;
+    color: white;
+    &:hover {
+      color: red;
     }
   }
 }

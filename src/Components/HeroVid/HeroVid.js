@@ -5,7 +5,7 @@ import { BiEditAlt } from "react-icons/bi";
 import { RxUpdate } from "react-icons/rx";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { ImCancelCircle } from "react-icons/im";
-import { calculateNewValue } from "@testing-library/user-event/dist/utils";
+// import { calculateNewValue } from "@testing-library/user-event/dist/utils";
 
 const HeroVid = ({
   video,
@@ -49,7 +49,7 @@ const HeroVid = ({
         onSubmit={(event) => handleUpdate(event, video.id)}
       >
         <textarea
-          className="hero__info"
+          className="hero__info-tec"
           type="text"
           name="techniqueName"
           rows="1"
@@ -58,7 +58,9 @@ const HeroVid = ({
           onChange={(event) =>
             setHeroVideo({ ...video, technique_name: event.target.value })
           }
-        ></textarea>
+        >
+       
+        </textarea>
 
         <textarea
           className="hero__info"
@@ -70,7 +72,9 @@ const HeroVid = ({
           onChange={(event) =>
             setHeroVideo({ ...video, description: event.target.value })
           }
-        ></textarea>
+        >
+  
+        </textarea>
 
         <div className="hero__buttons">
           {editVideoId === video.id ? (

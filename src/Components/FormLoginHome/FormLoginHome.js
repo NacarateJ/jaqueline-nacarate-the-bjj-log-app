@@ -1,8 +1,8 @@
-import "./HomeLogin.scss";
+import "../../Styles/FormsLoginAdd.scss";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const HomeLogin = () => {
+const FormLoginHome = () => {
   return (
     <div className="form-login">
       <div className="form__container">
@@ -25,4 +25,4 @@ const HomeLogin = () => {
   );
 };
 
-export default HomeLogin;
+export default FormLoginHome;

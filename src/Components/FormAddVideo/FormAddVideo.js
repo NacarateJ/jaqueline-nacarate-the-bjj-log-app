@@ -1,9 +1,7 @@
-import "../HomeLogin/HomeLogin.scss";
-import Alerts from "../Alerts/Alerts";
+import "../../Styles/FormsLoginAdd.scss";
 import React from "react";
-import { useState } from "react";
 
-const AddVideo = ({
+const FormAddVideo = ({
   handleSubmit,
   handleVideo,
   videoRef,
@@ -11,12 +9,8 @@ const AddVideo = ({
   // loadPosts,
   users,
 }) => {
- const [message, setMessage] = useState("");
-
   return (
     <>
-      <Alerts message={message} setMessage={setMessage} tipo="erro" />
-
       <div className="form">
         <div className="form__container-add">
           <form
@@ -86,4 +80,4 @@ const AddVideo = ({
   );
 };
 
-export default AddVideo;
+export default FormAddVideo;
