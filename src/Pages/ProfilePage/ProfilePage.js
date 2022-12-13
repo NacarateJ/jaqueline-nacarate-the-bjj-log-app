@@ -84,7 +84,6 @@ const ProfilePage = () => {
     // fetchUsers();
   }, [params.videoId]);
 
-  console.log("videos", videos);
 
 
   // Posting new Video
@@ -155,16 +154,25 @@ const ProfilePage = () => {
         <div className="head">
           <UserProfile handleUpload={handleUpload} />
 
-          {heroVideo && <HeroVid video={heroVideo} />}
+          {heroVideo && (
+            <HeroVid
+              video={heroVideo}
+              setHeroVideo={setHeroVideo}
+              handleEdit={handleEdit}
+              handleUpdate={handleUpdate}
+              handleDelete={handleDelete}
+              editVideoId={editVideoId}
+            />
+          )}
         </div>
 
         <VideoGallery
           videos={videos}
           handleChange={handleChange}
-          handleEdit={handleEdit}
-          handleUpdate={handleUpdate}
-          handleDelete={handleDelete}
-          editVideoId={editVideoId}
+          // handleEdit={handleEdit}
+          // handleUpdate={handleUpdate}
+          // handleDelete={handleDelete}
+          // editVideoId={editVideoId}
         />
       </section>
 
