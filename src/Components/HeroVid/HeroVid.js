@@ -55,7 +55,9 @@ const HeroVid = ({
           rows="1"
           cols="30"
           value={video.technique_name}
-          onChange={setHeroVideo}
+          onChange={(event) =>
+            setHeroVideo({ ...video, technique_name: event.target.value })
+          }
         ></textarea>
 
         <textarea
@@ -65,7 +67,9 @@ const HeroVid = ({
           rows="5"
           cols="30"
           value={video.description}
-          onChange={setHeroVideo}
+          onChange={(event) =>
+            setHeroVideo({ ...video, description: event.target.value })
+          }
         ></textarea>
 
         <div className="hero__buttons">
