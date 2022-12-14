@@ -6,7 +6,7 @@
 .alert {
   position: absolute;
   top: 5rem;
-  right: 0.2rem;
+  right: 3.5rem;
   width: 0;
   height: 3.75rem;
   margin: .4375rem;
@@ -33,5 +33,13 @@
     &:hover {
       color: red;
     }
+  }
+}
+
+
+// Alert for mobile
+@include medium {
+  .alert {
+      right: 0;
   }
 }
