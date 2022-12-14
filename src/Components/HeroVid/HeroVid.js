@@ -5,7 +5,6 @@ import { BiEditAlt } from "react-icons/bi";
 import { RxUpdate } from "react-icons/rx";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { ImCancelCircle } from "react-icons/im";
-// import { calculateNewValue } from "@testing-library/user-event/dist/utils";
 
 const HeroVid = ({
   video,
@@ -17,26 +16,10 @@ const HeroVid = ({
 }) => {
   const [isCancelShowValid, setIsCancelShowValid] = useState(false);
 
-
-
   const handleCancel = (event) => {
     event.preventDefault();
     setIsCancelShowValid(true);
   };
-
-  // const handleTest = (event) => {
-  //   console.log(event);
-  // }
-
-
-
-  // const handleClick = (event) => {
-  //   setHeroVideo({
-  //     ...video,
-  //     technique_name: event.target.value,
-  //     description: event.target.value,
-  //   }); 
-  // }
 
   return (
     <main className="hero">
@@ -46,7 +29,9 @@ const HeroVid = ({
       <form
         className="hero__form"
         autoComplete="off"
-        onSubmit={(event) => handleUpdate(event, video.id)}
+        onSubmit={(event) => 
+          {
+          handleUpdate(event, video.id)}}
       >
         <textarea
           className="hero__info-tec"
@@ -111,7 +96,8 @@ const HeroVid = ({
 
           <button
             className="delete"
-            onClick={(event) => handleDelete(event, video.id)}
+            onClick={(event) => 
+                handleDelete(event, video.id)}
           >
             <RiDeleteBin2Line className="hero__but-icon" />
           </button>

@@ -3,6 +3,7 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import Alerts from "../../Components/Alerts/Alerts";
 import UserProfile from "../../Components/UserProfile/UserProfile";
+// import Users from "../Users/Users";
 import FormAddVideo from "../../Components/FormAddVideo/FormAddVideo";
 import HeroVid from "../../Components/HeroVid/HeroVid";
 import VideoGallery from "../../Components/VideoGallery/VideoGallery";
@@ -39,6 +40,12 @@ const ProfilePage = () => {
 
   // State for users
   // const [users, setUsers] = useState([]);
+
+  function refreshPage() {
+    setTimeout(() => {
+      window.location.reload();
+    }, 3000);
+  }
 
   // Functio to hide and show user's profile page and form to upload new video
   const handleUpload = (event) => {
@@ -100,6 +107,7 @@ const ProfilePage = () => {
     // fetchUsers();
   }, [params.videoId]);
 
+
   // Posting new Video
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -119,7 +127,6 @@ const ProfilePage = () => {
     formData.append("description", newVideo.description);
     formData.append("video", newVideo.video);
     formData.append("user_id", newVideo.user_id);
-
     try {
       const response = await axios
         .post(`${BACK_END}/videos`, formData, {
@@ -139,10 +146,11 @@ const ProfilePage = () => {
 
       setMessage("Video loaded!");
 
+      refreshPage();
+
       setTimeout(() => {
         setMessage("");
       }, 3000);
-
     } catch (error) {
       console.log(error);
       setMessage("Error loading video.");
@@ -177,19 +185,27 @@ const ProfilePage = () => {
       technique_name: event.target.techniqueName.value,
       description: event.target.description.value,
     };
+
+    setMessage("Saving your changes...");
+
     axios.patch(`${BACK_END}/videos/${videoId}`, values).then((response) => {
       const updatedVideos = videos.map((video) =>
         video.id === response.data.id ? response.data : video
       );
+
+      
       setVideos(updatedVideos);
       setEditVideoId(null);
+      
     });
+    
+    // setMessage("Saved!");
 
-      setMessage("Saved!");
+    refreshPage();
 
-      setTimeout(() => {
-        setMessage("");
-      }, 3000);
+    setTimeout(() => {
+      setMessage("");
+    }, 3000);
   };
 
   const handleDelete = async (event, videoId) => {
@@ -199,12 +215,13 @@ const ProfilePage = () => {
     } = await axios.delete(`${BACK_END}/videos/${videoId}`);
     setVideos(videos.filter((video) => video.id !== deletedVideoId));
 
+    setMessage("Video deleted!");
 
-      setMessage("Video deleted!");
+    refreshPage();
 
-      setTimeout(() => {
-        setMessage("");
-      }, 3000);
+    setTimeout(() => {
+      setMessage("");
+    }, 3000);
   };
 
   return (
@@ -217,6 +234,7 @@ const ProfilePage = () => {
             ${isUserShowValid ? "" : "user--hide"} `}
       >
         <div className="head">
+          {/* <Users/> */}
           <UserProfile handleUpload={handleUpload} />
 
           {heroVideo && (

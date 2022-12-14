@@ -69,7 +69,8 @@ const FormAddVideo = ({
         </select>
       </label> */}
             <br />
-            <button className="form__btn" type="submit">
+            <button className="form__btn" type="submit" 
+            >
               Add Video
             </button>
             <br />
