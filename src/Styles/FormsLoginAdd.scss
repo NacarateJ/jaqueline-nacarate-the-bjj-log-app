@@ -15,6 +15,8 @@
   &__container-add {
     margin: 2rem 0;
     background-color: black;
+    display: flex;
+    flex-direction: column;
   }
 
   &__form {
@@ -70,7 +72,23 @@
     }
   }
 
+  &__btn-x {
+    border: none;
+    background-color: black;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  &__btn-x-icon {
+    color: white;
+    font-size: 1.5rem;
+    &:hover {
+      color: red;
+    }
+  }
+
   &__new-video {
+    margin-top: 1.8rem;
     background-size: cover;
     object-fit: cover;
     width: 100%;
@@ -85,26 +103,26 @@
   .form-login {
     margin: 8.6rem 0;
   }
-// }
-// .form {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   // margin: 0 auto;
+  // }
+  // .form {
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   // margin: 0 auto;
 
-//   &__container-add {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     // margin: 0 auto;
-//   }
+  //   &__container-add {
+  //     display: flex;
+  //     justify-content: center;
+  //     align-items: center;
+  //     // margin: 0 auto;
+  //   }
 
-//   &__form {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     // margin: 0 auto;
-//   }
+  //   &__form {
+  //     display: flex;
+  //     justify-content: center;
+  //     align-items: center;
+  //     // margin: 0 auto;
+  //   }
 }
 
 // Login form for desktop

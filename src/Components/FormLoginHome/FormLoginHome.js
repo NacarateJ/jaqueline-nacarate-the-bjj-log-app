@@ -14,7 +14,7 @@ const FormLoginHome = () => {
           <label className="form__label">Password</label>
           <input type="password" className="form__box"></input>
           <br />
-          <Link to="/profile">
+          <Link to={"/profile/bdc6bb69-e09c-498d-8abd-be2792504d00"}>
             <button className="form__btn" type="submit" value="">
               LOGIN
             </button>

@@ -14,8 +14,11 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/profile/bdc6bb69-e09c-498d-8abd-be2792504d00" element={<ProfilePage />} />
+          <Route
+            path="/profile"
+            element={<ProfilePage />}
+          />
+          <Route path="/profile/:videoId" element={<ProfilePage />} />
           <Route path="*" element={<ProfilePage />} />
         </Routes>
         <Footer />
