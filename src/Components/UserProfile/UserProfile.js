@@ -16,8 +16,8 @@ const UserProfile = ({
   // handleUpdate,
   // handleDelete,
 }) => {
-  const [selectedOption, setSelectedOption] = useState("white");
-  const [belt, setBelt] = useState("whiteBelt.jpg");
+  const [selectedOption, setSelectedOption] = useState("blue");
+  const [belt, setBelt] = useState("blueBelt.jpg");
 
   const handleBelt = (event) => {
     setSelectedOption(event.target.value);
@@ -36,7 +36,7 @@ const UserProfile = ({
   };
 
   const colors = ["white", "blue", "purple", "brown", "black"];
-  const [borderColor, setBorderColor] = useState("white");
+  const [borderColor, setBorderColor] = useState("blue");
 
   const handleColorChange = (event) => {
     setBorderColor(event.target.value);
@@ -117,12 +117,13 @@ const UserProfile = ({
           {/* <label for="belts">Selet your belt</label> */}
           <select
             className="users__edit-profile"
+          defaultValue={"blue"}
             onChange={(event) => {
               handleBelt(event);
               handleColorChange(event);
             }}
           >
-            <option value="">Selet your belt</option>
+            <option value="">Select your belt</option>
             {colors.map((color) => (
               <option key={color} value={color}>
                 {color}

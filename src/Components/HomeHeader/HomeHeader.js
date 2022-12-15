@@ -9,7 +9,7 @@ const HomeHeader = ({ handleSignIn }) => {
         Keep track of your training to level up your game.
       </h1>
       <button className="home-header__button" onClick={handleSignIn}>
-        Sign In
+        Login
       </button>
     </div>
   );

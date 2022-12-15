@@ -1,4 +1,5 @@
 import "./VideoGallery.scss";
+import { Link } from "react-router-dom";
 import React from "react";
 
 const VideoGallery = ({
@@ -18,24 +19,23 @@ const VideoGallery = ({
                 handleChange(video);
               }}
             >
-              <form
-                className="gallery__form"
-                autoComplete="off"
-              >
+              <form className="gallery__form" autoComplete="off">
                 <div className="gallery__collection">
-                  <video
-                    className="gallery__videos"
-                    src={video.video}
-                  ></video>
-        
-                    <textarea
-                      className="gallery__info"
-                      type="text"
-                      name="techniqueName"
-                      rows="1"
-                      cols="30"
-                      defaultValue={video.technique_name}
-                    ></textarea>
+                  <Link to={`/profile/${video.id}`}>
+                    <video
+                      className="gallery__videos"
+                      src={video.video}
+                    ></video>
+                  </Link>
+
+                  <textarea
+                    className="gallery__info"
+                    type="text"
+                    name="techniqueName"
+                    rows="1"
+                    cols="30"
+                    defaultValue={video.technique_name}
+                  ></textarea>
                 </div>
               </form>
             </div>

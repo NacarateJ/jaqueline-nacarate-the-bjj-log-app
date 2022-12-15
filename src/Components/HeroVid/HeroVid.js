@@ -15,6 +15,7 @@ const HeroVid = ({
   handleDelete,
 }) => {
   const [isCancelShowValid, setIsCancelShowValid] = useState(false);
+  const [editing, setEditing] = useState(false);
 
   const handleCancel = (event) => {
     event.preventDefault();
@@ -29,11 +30,12 @@ const HeroVid = ({
       <form
         className="hero__form"
         autoComplete="off"
-        onSubmit={(event) => 
-          {
-          handleUpdate(event, video.id)}}
+        onSubmit={(event) => {
+          handleUpdate(event, video.id);
+        }}
       >
         <textarea
+          readOnly={!editing}
           className="hero__info-tec"
           type="text"
           name="techniqueName"
@@ -43,11 +45,10 @@ const HeroVid = ({
           onChange={(event) =>
             setHeroVideo({ ...video, technique_name: event.target.value })
           }
-        >
-       
-        </textarea>
+        ></textarea>
 
         <textarea
+          readOnly={!editing}
           className="hero__info"
           type="text"
           name="description"
@@ -57,9 +58,7 @@ const HeroVid = ({
           onChange={(event) =>
             setHeroVideo({ ...video, description: event.target.value })
           }
-        >
-  
-        </textarea>
+        ></textarea>
 
         <div className="hero__buttons">
           {editVideoId === video.id ? (
@@ -88,19 +87,21 @@ const HeroVid = ({
               //       className={`edit
               // ${isEditShowValid ? "" : "edit--show"} `}
               type="button"
-              onClick={(event) => handleEdit(event, video.id)}
+              onClick={(event) => {
+                handleEdit(event, video.id);
+                setEditing(!editing);
+              }}
             >
               <BiEditAlt className="hero__but-icon" />
             </button>
           )}
-
-          <button
-            className="delete"
-            onClick={(event) => 
-                handleDelete(event, video.id)}
-          >
-            <RiDeleteBin2Line className="hero__but-icon" />
-          </button>
+            <button
+              className="delete"
+              onClick={(event) => handleDelete(event, video.id)}
+            >
+              <RiDeleteBin2Line className="hero__but-icon" />
+            </button>
+          
         </div>
       </form>
     </main>

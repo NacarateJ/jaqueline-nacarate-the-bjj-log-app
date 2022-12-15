@@ -40,6 +40,10 @@
   &__upload-video {
     margin-top: 1rem;
   }
+
+    select:focus {
+    outline: none;
+  }
 }
 
 // User profile for tablet
