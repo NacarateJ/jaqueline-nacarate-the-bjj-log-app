@@ -1,0 +1,133 @@
+@use "./Partials/breakpoints" as *;
+@use "./Partials/colors" as *;
+
+// Login form for mobile
+.form {
+  width: 100%;
+  height: 100%;
+
+  &__container,
+  &__container-add {
+    padding: 1rem;
+    border-radius: 1.25rem;
+  }
+
+  &__container-add {
+    margin: 2rem 0;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &__text {
+    color: white;
+    border-bottom: 2px solid white;
+    line-height: 1.875rem;
+    width: 100%;
+    text-align: center;
+    margin-top: 0;
+  }
+
+  &__label {
+    color: white;
+  }
+
+  &__box {
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 0.4rem;
+    background: transparent;
+    outline: none;
+    color: white;
+    text-align: center;
+    &:focus {
+      background: $black;
+    }
+  }
+
+  input[type="file"] {
+    display: none;
+  }
+
+  &__btn,
+  &__label-file {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    height: 2rem;
+    background-color: white;
+    border-radius: 20px;
+    border: none;
+    font-weight: 700;
+    outline: none;
+    &:hover {
+      background-color: black;
+      color: white;
+    }
+  }
+
+  &__btn-x {
+    border: none;
+    background-color: black;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  &__btn-x-icon {
+    color: white;
+    font-size: 1.5rem;
+    &:hover {
+      color: red;
+    }
+  }
+
+  &__new-video {
+    margin-top: 1.8rem;
+    background-size: cover;
+    object-fit: cover;
+    width: 100%;
+    height: 11.25rem;
+    border-radius: 0.5rem;
+    display: none;
+  }
+}
+
+// Login form for tablet
+@include medium {
+  .form-login {
+    margin: 8.6rem 0;
+  }
+  // }
+  // .form {
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   // margin: 0 auto;
+
+  //   &__container-add {
+  //     display: flex;
+  //     justify-content: center;
+  //     align-items: center;
+  //     // margin: 0 auto;
+  //   }
+
+  //   &__form {
+  //     display: flex;
+  //     justify-content: center;
+  //     align-items: center;
+  //     // margin: 0 auto;
+  //   }
+}
+
+// Login form for desktop
+@include large {
+  .form-login {
+    margin: 10rem 0;
+  }
+}

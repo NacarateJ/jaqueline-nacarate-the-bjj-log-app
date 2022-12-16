@@ -1,0 +1,38 @@
+@use "../../Styles/Partials/breakpoints" as *;
+@use "../../Styles/Partials/colors" as *;
+
+
+
+.user {
+    &--hide{
+      display: none;
+    }
+  }
+
+  .upload {
+    display: none;
+    &--show {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  @include medium {
+    .head {
+      display: flex;
+      justify-content: space-between;
+       border-bottom: 1px solid $mercury;
+       margin-right: 2rem;
+       margin-left: 2rem;
+    }
+  }
+
+  @include large {
+     .head {
+       margin-right: 3rem;
+        margin-left: 3rem;
+        margin-top: 1rem;
+     }
+  }
+
+  
