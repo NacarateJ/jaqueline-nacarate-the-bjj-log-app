@@ -1,0 +1,78 @@
+@use "../../Styles/Partials/breakpoints" as *;
+@use "../../Styles/Partials/colors" as *;
+
+// Footer for mobile
+.footer {
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  border-top: 1px solid $mercury;
+
+  &__left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &__wrestlers {
+     background-image: url(../../Assets/Logo/wrestlersBlack3.jpg);
+      background-size: cover;
+      border-radius: 0.2rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      flex-shrink: 0;
+      margin-top: 1rem;
+  }
+
+  &__label {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__icons {
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    color: $black;
+    gap: 1.5rem;
+  }
+}
+
+// Footer form for tablet
+@include medium {
+  .footer {
+    padding: 1rem 2rem;
+    display: flex;
+     flex-direction: row;
+     justify-content: space-between;
+
+    &__left {
+      flex-direction: row;
+    }
+
+    &__wrestlers {
+      width: 2rem;
+      height: 2rem;
+      margin: 0;
+    }
+
+    &__label {
+      padding-top: 0.5rem;
+      padding-left: 0.5rem;
+    }
+
+
+     &__icons {
+        align-self: center;
+     }
+  }
+}
+
+// Footer form for Desktop
+@include large {
+  .footer {
+    padding: 1rem 3rem;
+
+  }
+}

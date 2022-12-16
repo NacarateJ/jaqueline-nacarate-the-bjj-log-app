@@ -1,0 +1,10 @@
+@use "../../Styles/Partials/colors" as *;
+@use "../../Styles/Partials/fonts" as *;
+
+@mixin btn-theme {
+  font-family: "Anek Devanagari";
+  width: 100%;
+  border-radius: 0.25rem;
+  border: 1px solid $mercury;
+  background-color: $alabaster;
+}
