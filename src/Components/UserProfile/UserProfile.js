@@ -16,27 +16,27 @@ const UserProfile = ({
   // handleUpdate,
   // handleDelete,
 }) => {
-  const [selectedOption, setSelectedOption] = useState("blue");
+  const [selectedOption, setSelectedOption] = useState("Blue");
   const [belt, setBelt] = useState("blueBelt.jpg");
 
   const handleBelt = (event) => {
     setSelectedOption(event.target.value);
 
-    if (event.target.value === "white") {
+    if (event.target.value === "White") {
       setBelt("whiteBelt.jpg");
-    } else if (event.target.value === "blue") {
+    } else if (event.target.value === "Blue") {
       setBelt("blueBelt.jpg");
-    } else if (event.target.value === "purple") {
+    } else if (event.target.value === "Purple") {
       setBelt("purpleBelt.jpg");
-    } else if (event.target.value === "brown") {
+    } else if (event.target.value === "Brown") {
       setBelt("brownBelt.jpg");
-    } else if (event.target.value === "black") {
+    } else if (event.target.value === "Black") {
       setBelt("blackBelt.jpg");
     }
   };
 
-  const colors = ["white", "blue", "purple", "brown", "black"];
-  const [borderColor, setBorderColor] = useState("blue");
+  const colors = ["White", "Blue", "Purple", "Brown", "Black"];
+  const [borderColor, setBorderColor] = useState("Blue");
 
   const handleColorChange = (event) => {
     setBorderColor(event.target.value);
@@ -113,40 +113,29 @@ const UserProfile = ({
             src={require(`../../Assets/Images/${belt}`)}
             alt="Selected belt"
           ></img>
-
-          {/* <label for="belts">Selet your belt</label> */}
           <select
             className="users__edit-profile"
-          defaultValue={"blue"}
+            defaultValue={"Blue"}
             onChange={(event) => {
               handleBelt(event);
               handleColorChange(event);
             }}
           >
-            <option value="">Select your belt</option>
+            <option defaultValue="Select your belt">Select your belt</option>
             {colors.map((color) => (
               <option key={color} value={color}>
                 {color}
               </option>
             ))}
-            <option value="white">White</option>
-            <option value="blue">Blue</option>
-            <option value="purple">Purple</option>
-            <option value="brown">Brown</option>
-            <option value="black">Black</option>
           </select>
+            <button
+              className="users__upload-video"
+              type="text"
+              onClick={handleUpload}
+            >
+              Upload a new video
+            </button>
         </div>
-      </div>
-
-      {/* <button className="users__edit-profile">Edit profile</button> */}
-      <div className="user__upload-video-container">
-        <button
-          className="users__upload-video"
-          type="text"
-          onClick={handleUpload}
-        >
-          Upload a new video
-        </button>
       </div>
     </div>
   );
