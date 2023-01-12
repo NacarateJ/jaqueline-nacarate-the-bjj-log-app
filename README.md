@@ -12,4 +12,10 @@ Is an app designed for Jiu-Jitsers to keep track of the techniques learned in tr
 * To start the Back-end run npm run server
 * It might ask about the Firebase-Key but just ignore it. Since the Firebase Storage is connected to ImageKit you should be able to have access to the videos I already have on the app.
 
-Added video demo
+## Demo
+
+<div align="center">
+
+https://user-images.githubusercontent.com/114256348/212002779-1df40fb0-a013-402b-ab25-233ebe77ff1e.mp4
+
+  </div>
