@@ -12,6 +12,13 @@ Is an app designed for Jiu-Jitsers to keep track of the techniques learned in tr
 * To start the Back-end run npm run server
 * It might ask about the Firebase-Key but just ignore it. Since the Firebase Storage is connected to ImageKit you should be able to have access to the videos I already have on the app.
 
+
+## Environment Variables
+1. Front-end:
+Add the following variables in .env file:
+
+```REACT_APP_API_URL=https://localhost:8080```
+
 ## Demo
 
 <div align="center">
