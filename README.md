@@ -6,11 +6,17 @@ Is an app designed for Jiu-Jitsers to keep track of the techniques learned in tr
 
 - To stream the videos in the browser I'm using ImageKit - an image management service that provides image optimization and fast CDN (content delivery network) delivery. I configured it to fetch the videos straight from my Firebase Storage.
 
-* To install and run the project you will need to clone or dowload the Front-end file - jaqueline-nacarate-the-bjj-log-app, and the Back-end file - jaqueline-nacarate-the-bjj-log-app-api.
-* Run nmp i to download modules needed
-* To start the Front-end run npm start
-* To start the Back-end run npm run server
-* It might ask about the Firebase-Key but just ignore it. Since the Firebase Storage is connected to ImageKit you should be able to have access to the videos I already have on the app.
+
+
+## Tech Stack and Tools
+* HTML, SASS, JavaScript, React, React Router, Node.js, Express, API's , MySQL, Knex.js, Multer, ImageKit, Firebase, Postman, Axios.
+
+## Installation:
+1. To install and run the project you will need to clone or dowload the Front-end file - [jaqueline-nacarate-the-bjj-log-app](https://github.com/NacarateJ/jaqueline-nacarate-the-bjj-log-app), and the Back-end file - [jaqueline-nacarate-the-bjj-log-app-api](https://github.com/NacarateJ/jaqueline-nacarate-the-bjj-log-app-api);
+2. Run ```nmp i``` to install all the required packages for the app;
+3. To start the Front-end run the command ```npm start```;
+4. To start the Back-end run the command ```npm run server```;
+5. It might ask about the Firebase-Key but just ignore it. Since the Firebase Storage is connected to ImageKit you should be able to have access to the videos I already have on the app.
 
 
 ## Environment Variables
@@ -44,6 +50,10 @@ Once the database has been created, run the latest migration file to build the d
 Once the tables have been created we can seed them to populate the tables with data. To do this run:
 
 ```npm run seed```
+
+
+
+PS: The BJJ LogApp is still a work in progress. On the profile page we have full CRUD operations for the videos and the next step is to implemet the same for the users.
 
 ## Demo
 
