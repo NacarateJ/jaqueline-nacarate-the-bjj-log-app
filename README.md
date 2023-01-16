@@ -18,6 +18,31 @@ Is an app designed for Jiu-Jitsers to keep track of the techniques learned in tr
 Add the following variables in .env file:
 
 ```REACT_APP_API_URL=https://localhost:8080```
+  
+2. Back-end:
+
+```DB_LOCAL_DBNAME="the-bjj-log-app"```<br>
+```DB_LOCAL_USER="YOUR DB USER NAME"```<br>
+```DB_LOCAL_PASSWORD="YOUR DB PASSWORD"```<br>
+```PORT = 8080```
+
+## To connect to DB and data seeding
+
+To connect the server with the databse we used a SQL query builder, knex.js. 
+
+Install knex.js if it has not yet been installed:
+
+```npm install knex --save```
+
+Create a new database named "the-bjj-log-app" on your local machine using the [mysql client tool](https://www.mysqltutorial.org/mysql-create-database/).
+
+Once the database has been created, run the latest migration file to build the database table. To do this run the command as follows:
+
+```npm run migrate```
+
+Once the tables have been created we can seed them to populate the tables with data. To do this run:
+
+```npm run seed```
 
 ## Demo
 
