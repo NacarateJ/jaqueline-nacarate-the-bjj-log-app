@@ -14,12 +14,13 @@ Is an app designed for Jiu-Jitsers to keep track of the techniques learned in tr
 
 
 ## Environment Variables
-1. Front-end:
+1. Front-end: <br>
 Add the following variables in .env file:
 
 ```REACT_APP_API_URL=https://localhost:8080```
   
-2. Back-end:
+2. Back-end: <br>
+Add the following variables in .env file:
 
 ```DB_LOCAL_DBNAME="the-bjj-log-app"```<br>
 ```DB_LOCAL_USER="YOUR DB USER NAME"```<br>
