@@ -1,25 +1,28 @@
-// import axios from "axios";
-// import UserProfile from "../../Components/UserProfile/UserProfile";
-// import React, { useEffect, useState } from "react";
+import axios from "axios";
+import UserProfile from "../../Components/UserProfile/UserProfile";
+import React, { useEffect, useState } from "react";
 
 
-// const USERS_API = `${process.env.REACT_APP_BACKEND_URL}/users`;
+const USERS_API = `${process.env.REACT_APP_BACKEND_URL}/users`;
 
 
-// const Users = () => {
-//  const [users, setUsers] = useState([]);
-//   const [editUserId, setEditUserId] = useState(null);
+const Users = () => {
+ const [users, setUsers] = useState([]);
+  const [editUserId, setEditUserId] = useState(null);
 
   
-//   useEffect(() => {
-//       const fetchUsers = async () => {
-//           const { data } = await axios.get(USERS_API);
-//           setUsers(data);
-//         };
+  useEffect(() => {
+      const fetchUsers = async () => {
+          const { data } = await axios.get(USERS_API);
+          setUsers(data);
+        };
         
-//         fetchUsers();
-//     }, []);
+        fetchUsers();
+    }, []);
 
+
+
+    //   Function to add new users (in future)
 //     const handleSubmit = (event) => {
 //     event.preventDefault();
 //     const newUser = {
@@ -34,28 +37,28 @@
 //   };
 
 
-//    const handleEdit = (event, userId) => {
-//     event.preventDefault();
-//     setEditUserId(userId);
-//   };
+   const handleEdit = (event, userId) => {
+    event.preventDefault();
+    setEditUserId(userId);
+  };
 
-//     const handleUpdate = (event, userId) => {
-//     event.preventDefault();
-//     const values = {
-//      name: event.target.userName.value,
-//       email: event.target.userEmail.value,
-//       belt_color: event.target.userBeltColor.value,
-//     };
-//     axios.patch(`${USERS_API }/${userId}`, values).then((response) => {
-//       const updatedUsers = users.map((user) =>
-//         user.id === response.data.id ? response.data : user
-//       );
-//       setUsers(updatedUsers);
-//       setEditUserId(null);
-//     });
-//   };
+    const handleUpdate = (event, userId) => {
+    event.preventDefault();
+    const values = {
+     name: event.target.userName.value,
+      email: event.target.userEmail.value,
+      belt_color: event.target.userBeltColor.value,
+    };
+    axios.patch(`${USERS_API}/${userId}`, values).then((response) => {
+      const updatedUsers = users.map((user) =>
+        user.id === response.data.id ? response.data : user
+      );
+      setUsers(updatedUsers);
+      setEditUserId(null);
+    });
+  };
 
-
+    //   Function to delete users
 //     const handleDelete = async (event, userId) => {
 //     event.preventDefault();
 //     const {
@@ -67,15 +70,15 @@
 //     );
 //   };
 
-    // return (
-    //   <UserProfile
-    //     users={users}
-    //     handleEdit={handleEdit}
-    //     handleUpdate={handleUpdate}
-    //     handleDelete={handleDelete}
-    //     editUserId={editUserId}
-    //   />
-    // );
-// }
+    return (
+      <UserProfile
+        users={users}
+        handleEdit={handleEdit}
+        handleUpdate={handleUpdate}
+        // handleDelete={handleDelete}
+        editUserId={editUserId}
+      />
+    );
+}
 
-// export default Users;
+export default Users;

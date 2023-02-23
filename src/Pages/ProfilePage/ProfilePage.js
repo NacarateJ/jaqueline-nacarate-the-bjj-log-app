@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import Alerts from "../../Components/Alerts/Alerts";
 import UserProfile from "../../Components/UserProfile/UserProfile";
-// import Users from "../Users/Users";
+import Users from "../Users/Users";
 import FormAddVideo from "../../Components/FormAddVideo/FormAddVideo";
 import HeroVid from "../../Components/HeroVid/HeroVid";
 import VideoGallery from "../../Components/VideoGallery/VideoGallery";
@@ -104,10 +104,11 @@ const ProfilePage = () => {
     //   const { data } = await axios.get(`${BACK_END}/users`);
     //   setUsers(data);
     // };
-
+    
     fetchVideos();
     // fetchUsers();
   }, [params.videoId]);
+  
 
   // Posting new Video
   const handleSubmit = async (event) => {
@@ -243,8 +244,10 @@ const ProfilePage = () => {
             ${isUserShowValid ? "" : "user--hide"} `}
       >
         <div className="head">
-          {/* <Users/> */}
-          <UserProfile handleUpload={handleUpload} />
+          <Users />
+          <UserProfile
+            handleUpload={handleUpload}
+          />
 
           {heroVideo && (
             <HeroVid
@@ -274,11 +277,11 @@ const ProfilePage = () => {
             videoRef={videoRef}
             setIsUserShowValid={setIsUserShowValid}
             setIsUploadHideValid={setIsUploadHideValid}
+            // users={users}
             // setShowNewPost={setShowNewPost}
             // setPosts={setPosts}
           />
           {/* // )} */}
-          {/* // users={users} */}
         </div>
       </section>
     </div>
