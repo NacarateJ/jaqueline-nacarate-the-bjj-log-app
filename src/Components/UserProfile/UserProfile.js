@@ -1,35 +1,34 @@
 import "./UserProfile.scss";
-import React from "react";
-import Photo from "../../Assets/Images/user.jpg";
-import { useState } from "react";
+import React, { useState } from "react";
 
 const UserProfile = ({
-  handleUpload,
-  setUsers,
   users,
   editUserId,
   handleEdit,
   handleUpdate,
   // handleDelete,
+  // setUsers,
 }) => {
-  const [selectedOption, setSelectedOption] = useState("Blue");
+  const [selectedOption, setSelectedOption] = useState();
   const [belt, setBelt] = useState("blueBelt.jpg");
-  const [showEmailForm, setShowEmailForm] = useState(false);
+  const [showForms, setShowForms] = useState(false);
+  const [editing, setEditing] = useState(false);
 
   const handleBelt = (event) => {
     setSelectedOption(event.target.value);
+  
 
-    if (event.target.value === "White") {
-      setBelt("whiteBelt.jpg");
-    } else if (event.target.value === "Blue") {
-      setBelt("blueBelt.jpg");
-    } else if (event.target.value === "Purple") {
-      setBelt("purpleBelt.jpg");
-    } else if (event.target.value === "Brown") {
-      setBelt("brownBelt.jpg");
-    } else if (event.target.value === "Black") {
-      setBelt("blackBelt.jpg");
-    }
+  //   if (event.target.value === "White") {
+  //     setBelt("whiteBelt.jpg");
+  //   } else if (event.target.value === "Blue") {
+  //     setBelt("blueBelt.jpg");
+  //   } else if (event.target.value === "Purple") {
+  //     setBelt("purpleBelt.jpg");
+  //   } else if (event.target.value === "Brown") {
+  //     setBelt("brownBelt.jpg");
+  //   } else if (event.target.value === "Black") {
+  //     setBelt("blackBelt.jpg");
+  //   }
   };
 
   const colors = ["White", "Blue", "Purple", "Brown", "Black"];
@@ -41,12 +40,12 @@ const UserProfile = ({
 
   const handleEditClick = (event) => {
     event.preventDefault();
-    setShowEmailForm(true);
+   setShowForms(true);
   };
 
   const handleUpdateClick = (event) => {
     event.preventDefault();
-    setShowEmailForm(false);
+    setShowForms(false);
   };
 
   return (
@@ -63,7 +62,7 @@ const UserProfile = ({
                 <div className="users__avatar">
                   <img
                     className="users__photo"
-                    src={Photo}
+                    src={user.profile_image}
                     style={{ border: `5px solid ${borderColor}` }}
                     alt="Woman smiling holding 2 gold medals"
                   ></img>
@@ -71,44 +70,46 @@ const UserProfile = ({
 
                 <div className="users__information">
                   <textarea
+                    readOnly={!editing}
                     className="users__name"
                     type="text"
                     name="userName"
+                    defaultValue={user.name}
                     rows="1"
                     cols="30"
-                    value={user.name}
-                    onChange={(event) =>
-                      setUsers({ ...user, name: event.target.value })
-                    }
+                    // value={user.name}
+                    // onChange={(event) =>
+                    //   setUsers({ ...user, name: event.target.value })
+                    // }
                   ></textarea>
-                  {showEmailForm ? (
+                  {showForms && (
                     <textarea
+                      readOnly={!editing}
                       className="users__email"
                       type="text"
                       name="userEmail"
+                      defaultValue={user.email}
                       rows="1"
                       cols="30"
-                      value={user.email}
-                      onChange={(event) =>
-                        setUsers({ ...user, email: event.target.value })
-                      }
+                      // value={user.email}
+                      // onChange={(event) =>
+                      //   setUsers({ ...user, email: event.target.value })
+                      // }
                     ></textarea>
-                  ) : (
-                    <></>
-                    // <div className="user__email">{user.email}</div>
                   )}
 
                   <img
                     className="users__belt"
-                    src={require(`../../Assets/Images/${belt}`)}
+                    src={user.belt_color}
                     alt="Selected belt color"
                   ></img>
 
-                  {editUserId === user.id ? (
+                  {editUserId === user.id && showForms && (
                     <>
                       <select
+                        readOnly={!editing}
                         className="users__edit-profile"
-                        defaultValue={"Blue"}
+                        defaultValue={user.belt_color}
                         onChange={(event) => {
                           handleBelt(event);
                           handleColorChange(event);
@@ -123,23 +124,25 @@ const UserProfile = ({
                           </option>
                         ))}
                       </select>
-                      {showEmailForm && (
-                        <button
-                          className="users__update"
-                          type="submit"
-                          onClick={handleUpdateClick}
-                        >
-                          Update
-                        </button>
-                      )}
+
+                      <button
+                        className="users__update"
+                        type="submit"
+                        onClick={handleUpdateClick}
+                      >
+                        Update
+                      </button>
                     </>
-                  ) : (
+                  )}
+
+                  {!showForms && (
                     <button
                       className="users__edit-but"
                       type="button"
                       onClick={(event) => {
                         handleEdit(event, user.id);
                         handleEditClick(event);
+                        setEditing(!editing);
                       }}
                     >
                       Edit Profile
@@ -150,14 +153,6 @@ const UserProfile = ({
             </div>
           );
         })}
-                  <button
-                    className="users__upload-video"
-                    type="text"
-                    onClick={handleUpload}
-                  >
-                    Upload a new video
-                  </button>
-      
     </div>
   );
 };

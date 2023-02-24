@@ -1,5 +1,6 @@
 @use "../../Styles/Partials/breakpoints" as *;
 @use "../../Styles/Partials/colors" as *;
+@use "../../Styles/Partials/buttons" as *;
 
 
 
@@ -7,6 +8,16 @@
     &--hide{
       display: none;
     }
+  }
+
+  .upload-video-but {
+ @include btn-theme;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+
   }
 
   .upload {
@@ -33,6 +44,11 @@
         margin-left: 3rem;
         margin-top: 1rem;
      }
+
+     .upload-video-but {
+      font-size: 1.5rem;
+    }
   }
+    
 
   

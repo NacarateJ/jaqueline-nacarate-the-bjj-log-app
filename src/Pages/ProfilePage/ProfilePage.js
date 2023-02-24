@@ -2,7 +2,7 @@ import "./ProfilePage.scss";
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import Alerts from "../../Components/Alerts/Alerts";
-import UserProfile from "../../Components/UserProfile/UserProfile";
+// import UserProfile from "../../Components/UserProfile/UserProfile";`
 import Users from "../Users/Users";
 import FormAddVideo from "../../Components/FormAddVideo/FormAddVideo";
 import HeroVid from "../../Components/HeroVid/HeroVid";
@@ -104,11 +104,10 @@ const ProfilePage = () => {
     //   const { data } = await axios.get(`${BACK_END}/users`);
     //   setUsers(data);
     // };
-    
+
     fetchVideos();
     // fetchUsers();
   }, [params.videoId]);
-  
 
   // Posting new Video
   const handleSubmit = async (event) => {
@@ -142,7 +141,7 @@ const ProfilePage = () => {
           navigate(`/profile/${response.data.id}`);
           videoRef.current.src = "";
           videoRef.current.style.display = "none";
-          event.target.reset()
+          event.target.reset();
           // setVideos([...videos, response.data]);
           // setHeroVideo([...videos, response.data]);
         });
@@ -154,14 +153,13 @@ const ProfilePage = () => {
       // setShowNewPost(true);
 
       // refreshPage();
+
       setIsUserShowValid(true);
       setIsUploadHideValid(false);
 
       setTimeout(() => {
         setMessage("");
       }, 3000);
-
-
     } catch (error) {
       console.log(error);
       setMessage("Error loading video.");
@@ -196,17 +194,16 @@ const ProfilePage = () => {
       description: event.target.description.value,
     };
 
-    
     axios.patch(`${BACK_END}/videos/${videoId}`, values).then((response) => {
       const updatedVideos = videos.map((video) =>
-      video.id === response.data.id ? response.data : video
+        video.id === response.data.id ? response.data : video
       );
-      
+
       setVideos(updatedVideos);
       setEditVideoId(null);
     });
     setMessage("Saving your changes...");
-    
+
     setMessage("Saved!");
 
     // refreshPage();
@@ -244,10 +241,16 @@ const ProfilePage = () => {
             ${isUserShowValid ? "" : "user--hide"} `}
       >
         <div className="head">
-          <Users />
-          <UserProfile
-            handleUpload={handleUpload}
-          />
+          <div>
+            <Users />
+            <button
+              className="upload-video-but"
+              type="text"
+              onClick={handleUpload}
+            >
+              Upload a new video
+            </button>
+          </div>
 
           {heroVideo && (
             <HeroVid
