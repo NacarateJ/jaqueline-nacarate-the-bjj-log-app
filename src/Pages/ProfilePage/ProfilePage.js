@@ -36,12 +36,13 @@ const ProfilePage = () => {
   // const [posts, setPosts] = useState([]);
   // const [showNewPost, setShowNewPost] = useState(false);
 
+  // State for users
+  // const [users, setUsers] = useState([]);
+
   const videoRef = useRef();
 
   const navigate = useNavigate();
 
-  // State for users
-  // const [users, setUsers] = useState([]);
 
   // function refreshPage() {
   //   setTimeout(() => {
@@ -108,6 +109,8 @@ const ProfilePage = () => {
     fetchVideos();
     // fetchUsers();
   }, [params.videoId]);
+
+
 
   // Posting new Video
   const handleSubmit = async (event) => {
@@ -198,7 +201,7 @@ const ProfilePage = () => {
       const updatedVideos = videos.map((video) =>
         video.id === response.data.id ? response.data : video
       );
-
+      
       setVideos(updatedVideos);
       setEditVideoId(null);
     });

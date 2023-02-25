@@ -36,13 +36,12 @@ const Users = () => {
     setEditUserId(userId);
   };
 
-  const handleUpdate = (event, userId) => {
-    event.preventDefault();
-    const values = {
-      name: event.target.userName.value,
-      email: event.target.userEmail.value,
-      belt_color: event.target.userBeltColor.value,
-    };
+const handleUpdate = (formData, userId) => {
+  const values = {
+    name: formData.get("userName"),
+    email: formData.get("userEmail"),
+    belt_color: formData.get("userBeltColor"),
+  };
     axios.patch(`${USERS_API}/${userId}`, values).then((response) => {
       const updatedUsers = users.map((user) =>
         user.id === response.data.id ? response.data : user
@@ -50,7 +49,24 @@ const Users = () => {
       setUsers(updatedUsers);
       setEditUserId(null);
     });
-  };
+};
+
+
+  // const handleUpdate = (event, userId) => {
+  //   event.preventDefault();
+  //   const values = {
+  //     name: event.target.userName.value,
+  //     email: event.target.userEmail.value,
+  //     belt_color: event.target.userBeltColor.value,
+  //   };
+  //   axios.patch(`${USERS_API}/${userId}`, values).then((response) => {
+  //     const updatedUsers = users.map((user) =>
+  //       user.id === response.data.id ? response.data : user
+  //     );
+  //     setUsers(updatedUsers);
+  //     setEditUserId(null);
+  //   });
+  // };
 
   //   Function to delete users
   //     const handleDelete = async (event, userId) => {
@@ -68,6 +84,7 @@ const Users = () => {
   return (
       <UserProfile
         users={users}
+        // setUsers={setUsers}
         handleEdit={handleEdit}
         handleUpdate={handleUpdate}
         // handleDelete={handleDelete}

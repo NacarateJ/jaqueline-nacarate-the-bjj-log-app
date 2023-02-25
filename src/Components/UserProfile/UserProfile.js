@@ -3,67 +3,69 @@ import React, { useState } from "react";
 
 const UserProfile = ({
   users,
+  setUsers,
   editUserId,
   handleEdit,
   handleUpdate,
   // handleDelete,
-  // setUsers,
 }) => {
-  const [selectedOption, setSelectedOption] = useState();
-  const [belt, setBelt] = useState("blueBelt.jpg");
+  // const [selectedOption, setSelectedOption] = useState();
+  // const [belt, setBelt] = useState("blueBelt.jpg");
   const [showForms, setShowForms] = useState(false);
   const [editing, setEditing] = useState(false);
 
-  const handleBelt = (event) => {
-    setSelectedOption(event.target.value);
-  
+  // const handleBelt = (event) => {
+  //   setSelectedOption(event.target.value);
 
-  //   if (event.target.value === "White") {
-  //     setBelt("whiteBelt.jpg");
-  //   } else if (event.target.value === "Blue") {
-  //     setBelt("blueBelt.jpg");
-  //   } else if (event.target.value === "Purple") {
-  //     setBelt("purpleBelt.jpg");
-  //   } else if (event.target.value === "Brown") {
-  //     setBelt("brownBelt.jpg");
-  //   } else if (event.target.value === "Black") {
-  //     setBelt("blackBelt.jpg");
-  //   }
-  };
+    //   if (event.target.value === "White") {
+    //     setBelt("whiteBelt.jpg");
+    //   } else if (event.target.value === "Blue") {
+    //     setBelt("blueBelt.jpg");
+    //   } else if (event.target.value === "Purple") {
+    //     setBelt("purpleBelt.jpg");
+    //   } else if (event.target.value === "Brown") {
+    //     setBelt("brownBelt.jpg");
+    //   } else if (event.target.value === "Black") {
+    //     setBelt("blackBelt.jpg");
+    //   }
+  // };
 
   const colors = ["White", "Blue", "Purple", "Brown", "Black"];
-  const [borderColor, setBorderColor] = useState("Blue");
+  // const [borderColor, setBorderColor] = useState("Blue");
 
-  const handleColorChange = (event) => {
-    setBorderColor(event.target.value);
-  };
+  // const handleColorChange = (event) => {
+  //   setBorderColor(event.target.value);
+  // };
 
   const handleEditClick = (event) => {
     event.preventDefault();
-   setShowForms(true);
+    setShowForms(true);
   };
 
-  const handleUpdateClick = (event) => {
+  const handleUpdateClick = (event, userId) => {
     event.preventDefault();
     setShowForms(false);
+     const formData = new FormData(event.target.form);
+     handleUpdate(formData, userId);
   };
 
   return (
     <div className="users">
       {users &&
         users.map((user) => {
+          // console.log(users)
           return (
             <div key={user.id}>
               <form
                 className="users__details-form"
                 autoComplete="off"
-                onSubmit={(event) => handleUpdate(event, user.id)}
+                // onSubmit={(event) => handleUpdate(event, user.id, setUsers)}
               >
                 <div className="users__avatar">
                   <img
                     className="users__photo"
                     src={user.profile_image}
-                    style={{ border: `5px solid ${borderColor}` }}
+                    // style={{ border: `5px solid ${borderColor}` }}
                     alt="Woman smiling holding 2 gold medals"
                   ></img>
                 </div>
@@ -77,7 +79,6 @@ const UserProfile = ({
                     defaultValue={user.name}
                     rows="1"
                     cols="30"
-                    // value={user.name}
                     // onChange={(event) =>
                     //   setUsers({ ...user, name: event.target.value })
                     // }
@@ -91,28 +92,28 @@ const UserProfile = ({
                       defaultValue={user.email}
                       rows="1"
                       cols="30"
-                      // value={user.email}
                       // onChange={(event) =>
                       //   setUsers({ ...user, email: event.target.value })
                       // }
                     ></textarea>
                   )}
 
-                  <img
+                  {/* <img
                     className="users__belt"
-                    src={user.belt_color}
+                    src={require(`../../Assets/Images/${belt}`)}
                     alt="Selected belt color"
-                  ></img>
+                  ></img> */}
 
                   {editUserId === user.id && showForms && (
                     <>
-                      <select
+                      {/* <select
                         readOnly={!editing}
                         className="users__edit-profile"
-                        defaultValue={user.belt_color}
+                        // defaultValue={user.belt_color}
                         onChange={(event) => {
-                          handleBelt(event);
-                          handleColorChange(event);
+                          // handleBelt(event);
+                          // handleColorChange(event);
+                          // setUsers({ ...user, belt_color: event.target.value });
                         }}
                       >
                         <option defaultValue="Select your belt">
@@ -123,12 +124,28 @@ const UserProfile = ({
                             {color}
                           </option>
                         ))}
-                      </select>
+                      </select> */}
+
+                      <textarea
+                        readOnly={!editing}
+                        className="users__edit-profile"
+                        type="text"
+                        name="userBeltColor"
+                        defaultValue={user.belt_color}
+                        placeholder="What's your belt color?"
+                        rows="1"
+                        cols="30"
+                        // onChange={(event) =>
+                        //   setUsers({ ...user, email: event.target.value })
+                        // }
+                      ></textarea>
 
                       <button
                         className="users__update"
                         type="submit"
-                        onClick={handleUpdateClick}
+                        onClick={(event) => {
+                          handleUpdateClick(event);
+                        }}
                       >
                         Update
                       </button>
