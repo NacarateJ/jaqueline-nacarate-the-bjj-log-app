@@ -1,4 +1,5 @@
 import "./UserProfile.scss";
+import Photo from "../../Assets/Images/user.jpg";
 import React, { useState } from "react";
 
 const UserProfile = ({
@@ -64,7 +65,7 @@ const UserProfile = ({
                 <div className="users__avatar">
                   <img
                     className="users__photo"
-                    src={user.profile_image}
+                    src={Photo}
                     // style={{ border: `5px solid ${borderColor}` }}
                     alt="Woman smiling holding 2 gold medals"
                   ></img>
