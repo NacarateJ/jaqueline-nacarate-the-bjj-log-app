@@ -35,21 +35,29 @@ Add the following variables in .env file:
 
 ## To connect to DB and data seeding
 
-To connect the server with the databse we used a SQL query builder, knex.js. 
+To connect the server with the databse we used a SQL query builder, `knex.js`. 
 
-Install knex.js if it has not yet been installed:
+Install knex and Knex Command Line Tool.
+
+To install knex globally on your local computer. Run the command:
+
+```npm install knex -g```
+
+This will allow you to use `knex` as a command line tool that helps you create and manage knex files.
+
+In addition, you will need to also install the knex module locally to use it in this project. Run the command:
 
 ```npm install knex --save```
 
 Create a new database named "the-bjj-log-app" on your local machine using the [mysql client tool](https://www.mysqltutorial.org/mysql-create-database/).
 
-Once the database has been created, run the latest migration file to build the database table. To do this run the command as follows:
+Once the database has been created, run the latest migration file to build the database table. Run the command:
 
-```npm run migrate```
+```knex migrate:latest```
 
-Once the tables have been created we can seed them to populate the tables with data. To do this run:
+Once the tables have been created we can seed them to populate the tables with data. Run the command:
 
-```npm run seed```
+```knex seed:run```
 
 
 
