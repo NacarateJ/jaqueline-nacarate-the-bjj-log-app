@@ -4,6 +4,7 @@ import axios from "axios";
 import Alerts from "../../Components/Alerts/Alerts";
 // import UserProfile from "../../Components/UserProfile/UserProfile";`
 import Users from "../Users/Users";
+import SearchBar from "../../Components/SearchBar/SearchBar";
 import FormAddVideo from "../../Components/FormAddVideo/FormAddVideo";
 import HeroVid from "../../Components/HeroVid/HeroVid";
 import VideoGallery from "../../Components/VideoGallery/VideoGallery";
@@ -25,6 +26,9 @@ const ProfilePage = () => {
 
   // State for all the videos
   const [videos, setVideos] = useState([]);
+
+  // state to search videos 
+  const [searchResults, setSearchResults] = useState([]);
 
   // State for hero video
   const [heroVideo, setHeroVideo] = useState();
@@ -95,6 +99,7 @@ const ProfilePage = () => {
         const heroVideo = data.find((video) => video.id === videoId);
         setAllVideos(data);
         setVideos(videos);
+        setSearchResults(videos);
         setHeroVideo(heroVideo);
       } catch (error) {
         console.log("Error", error);
@@ -253,6 +258,7 @@ const ProfilePage = () => {
             >
               Upload a new video
             </button>
+            <SearchBar videos={videos} setSearchResults={setSearchResults} />
           </div>
 
           {heroVideo && (
@@ -267,7 +273,10 @@ const ProfilePage = () => {
           )}
         </div>
 
-        <VideoGallery videos={videos} handleChange={handleChange} />
+        <VideoGallery
+          searchResults={searchResults}
+          handleChange={handleChange}
+        />
       </section>
 
       {/* Upload form to upload new video */}
