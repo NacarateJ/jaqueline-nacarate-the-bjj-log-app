@@ -1,42 +1,49 @@
 import "./UserProfile.scss";
 import Photo from "../../Assets/Images/user.jpg";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
 
 const UserProfile = ({
   users,
-  setUsers,
   editUserId,
   handleEdit,
   handleUpdate,
   // handleDelete,
 }) => {
-  // const [selectedOption, setSelectedOption] = useState();
-  // const [belt, setBelt] = useState("blueBelt.jpg");
+  const [selectedOption, setSelectedOption] = useState("");
+  const [belt, setBelt] = useState(localStorage.getItem("belt") || "");
   const [showForms, setShowForms] = useState(false);
   const [editing, setEditing] = useState(false);
 
-  // const handleBelt = (event) => {
-  //   setSelectedOption(event.target.value);
-
-    //   if (event.target.value === "White") {
-    //     setBelt("whiteBelt.jpg");
-    //   } else if (event.target.value === "Blue") {
-    //     setBelt("blueBelt.jpg");
-    //   } else if (event.target.value === "Purple") {
-    //     setBelt("purpleBelt.jpg");
-    //   } else if (event.target.value === "Brown") {
-    //     setBelt("brownBelt.jpg");
-    //   } else if (event.target.value === "Black") {
-    //     setBelt("blackBelt.jpg");
-    //   }
-  // };
+  const beltOptions = {
+    White: "whiteBelt.jpg",
+    Blue: "blueBelt.jpg",
+    Purple: "purpleBelt.jpg",
+    Brown: "brownBelt.jpg",
+    Black: "blackBelt.jpg",
+  };
 
   const colors = ["White", "Blue", "Purple", "Brown", "Black"];
-  // const [borderColor, setBorderColor] = useState("Blue");
 
-  // const handleColorChange = (event) => {
-  //   setBorderColor(event.target.value);
-  // };
+  const [borderColor, setBorderColor] = useState(
+    localStorage.getItem("borderColor") || ""
+  );
+
+ const handleBelt = (event) => {
+   setSelectedOption(event.target.value);
+
+   if (event.target.value in beltOptions) {
+     setBelt(beltOptions[event.target.value]);
+     setBorderColor(event.target.value);
+   }
+ };
+
+ useEffect(() => {
+   if (belt !== "") {
+     localStorage.setItem("belt", belt);
+     setBorderColor(Object.keys(beltOptions).find((key) => beltOptions[key] === belt));
+   }
+ }, [belt, beltOptions]);
 
   const handleEditClick = (event) => {
     event.preventDefault();
@@ -54,19 +61,17 @@ const UserProfile = ({
     <div className="users">
       {users &&
         users.map((user) => {
-          // console.log(users)
           return (
             <div key={user.id}>
               <form
                 className="users__details-form"
                 autoComplete="off"
-                // onSubmit={(event) => handleUpdate(event, user.id, setUsers)}
               >
                 <div className="users__avatar">
                   <img
                     className="users__photo"
                     src={Photo}
-                    // style={{ border: `5px solid ${borderColor}` }}
+                    style={{ border: `5px solid ${borderColor}` }}
                     alt="Woman smiling holding 2 gold medals"
                   ></img>
                 </div>
@@ -80,9 +85,6 @@ const UserProfile = ({
                     defaultValue={user.name}
                     rows="1"
                     cols="30"
-                    // onChange={(event) =>
-                    //   setUsers({ ...user, name: event.target.value })
-                    // }
                   ></textarea>
                   {showForms && (
                     <textarea
@@ -93,28 +95,23 @@ const UserProfile = ({
                       defaultValue={user.email}
                       rows="1"
                       cols="30"
-                      // onChange={(event) =>
-                      //   setUsers({ ...user, email: event.target.value })
-                      // }
                     ></textarea>
                   )}
 
-                  {/* <img
+                  <img
                     className="users__belt"
                     src={require(`../../Assets/Images/${belt}`)}
                     alt="Selected belt color"
-                  ></img> */}
+                  ></img>
 
                   {editUserId === user.id && showForms && (
                     <>
-                      {/* <select
+                      <select
                         readOnly={!editing}
                         className="users__edit-profile"
-                        // defaultValue={user.belt_color}
+                        name="userBeltColor"
                         onChange={(event) => {
-                          // handleBelt(event);
-                          // handleColorChange(event);
-                          // setUsers({ ...user, belt_color: event.target.value });
+                          handleBelt(event);
                         }}
                       >
                         <option defaultValue="Select your belt">
@@ -125,27 +122,13 @@ const UserProfile = ({
                             {color}
                           </option>
                         ))}
-                      </select> */}
-
-                      <textarea
-                        readOnly={!editing}
-                        className="users__edit-profile"
-                        type="text"
-                        name="userBeltColor"
-                        defaultValue={user.belt_color}
-                        placeholder="What's your belt color?"
-                        rows="1"
-                        cols="30"
-                        // onChange={(event) =>
-                        //   setUsers({ ...user, email: event.target.value })
-                        // }
-                      ></textarea>
+                      </select>
 
                       <button
                         className="users__update"
                         type="submit"
                         onClick={(event) => {
-                          handleUpdateClick(event);
+                          handleUpdateClick(event, user.id);
                         }}
                       >
                         Update

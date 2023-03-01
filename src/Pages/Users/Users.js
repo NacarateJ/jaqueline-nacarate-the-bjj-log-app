@@ -84,11 +84,10 @@ const handleUpdate = (formData, userId) => {
   return (
       <UserProfile
         users={users}
-        // setUsers={setUsers}
         handleEdit={handleEdit}
         handleUpdate={handleUpdate}
-        // handleDelete={handleDelete}
         editUserId={editUserId}
+        // handleDelete={handleDelete}
       />
    
   );

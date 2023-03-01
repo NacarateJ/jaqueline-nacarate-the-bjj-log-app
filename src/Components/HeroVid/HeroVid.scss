@@ -4,7 +4,7 @@
 
 .cancel {
   display: none;
-  &--hide {
+  &--show {
     display: flex;
   }
 }
@@ -15,12 +15,12 @@
 //   }
 // }
 
-// .update {
-//   display: none;
-//   &--show {
-//     display: flex;
-//   }
-// }
+.update {
+  display: none;
+  &--show {
+    display: flex;
+  }
+}
 
 // Hero video for mobile
 .hero {
