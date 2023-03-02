@@ -170,7 +170,7 @@ const ProfilePage = () => {
       }, 3000);
     } catch (error) {
       console.log(error);
-      setMessage("Error loading video.");
+      setMessage("Error loading video. Please check if you provided a Technique Name and a Description.");
 
       setTimeout(() => {
         setMessage("");
@@ -232,7 +232,7 @@ const ProfilePage = () => {
 
     navigate("/profile");
 
-    // setMessage("Video deleted!");
+    setMessage("Video deleted!");
 
     setTimeout(() => {
       setMessage("");

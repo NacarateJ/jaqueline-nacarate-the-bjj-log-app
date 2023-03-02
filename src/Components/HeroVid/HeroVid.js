@@ -15,11 +15,11 @@ const HeroVid = ({
   handleDelete,
 }) => {
 const [isEditMode, setIsEditMode] = useState(false);
-  const [editing, setEditing] = useState(false);
+const [editing, setEditing] = useState(false);
 
   // const handleCancel = (event) => {
   //   event.preventDefault();
-  //   setIsCancelShowValid(true);
+  //   setIsEditMode(false);
   // };
 
   return (
@@ -61,21 +61,17 @@ const [isEditMode, setIsEditMode] = useState(false);
         ></textarea>
 
         <div className="hero__buttons">
-          {editVideoId === video.id ? (
+          {editVideoId === video.id && isEditMode ? (
             <>
               <button
-                className={`update ${
-                  isEditMode ? "update--show" : "update--hide"
-                }`}
+                className="update"
                 type="submit"
               >
                 <RxUpdate className="hero__but-icon" />
               </button>
 
               <button
-                className={`cancel ${
-                  isEditMode ? "cancel--show" : "cancel--hide"
-                }`}
+                className="cancel"
                 type="button"
                 onClick={() => setIsEditMode(false)}
               >
@@ -96,7 +92,7 @@ const [isEditMode, setIsEditMode] = useState(false);
                 type="button"
                 onClick={(event) => {
                   handleEdit(event, video.id);
-                  setEditing(!editing);
+                  setEditing(true);
                   setIsEditMode(true);
                 }}
               >

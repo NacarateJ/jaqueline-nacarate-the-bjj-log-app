@@ -2,12 +2,12 @@
 @use "../../Styles/Partials/colors" as *;
 
 
-.cancel {
-  display: none;
-  &--show {
-    display: flex;
-  }
-}
+// .cancel {
+//   display: none;
+//   &--show {
+//     display: flex;
+//   }
+// }
 
 // .edit {
 //   &--show {
@@ -15,12 +15,12 @@
 //   }
 // }
 
-.update {
-  display: none;
-  &--show {
-    display: flex;
-  }
-}
+// .update {
+//   display: none;
+//   &--show {
+//     display: flex;
+//   }
+// }
 
 // Hero video for mobile
 .hero {
