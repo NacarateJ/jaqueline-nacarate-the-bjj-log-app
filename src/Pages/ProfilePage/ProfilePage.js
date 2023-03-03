@@ -35,8 +35,12 @@ const ProfilePage = () => {
 
   const [allVideos, setAllVideos] = useState([]);
 
-  // State to show new posts
+  
+  // state to set Alert messages
   const [message, setMessage] = useState("");
+
+  
+  // State to show new posts
   // const [posts, setPosts] = useState([]);
   // const [showNewPost, setShowNewPost] = useState(false);
 

@@ -17,10 +17,7 @@ const HeroVid = ({
 const [isEditMode, setIsEditMode] = useState(false);
 const [editing, setEditing] = useState(false);
 
-  // const handleCancel = (event) => {
-  //   event.preventDefault();
-  //   setIsEditMode(false);
-  // };
+
 
   return (
     <main className="hero">

@@ -63,10 +63,7 @@ const UserProfile = ({
         users.map((user) => {
           return (
             <div key={user.id}>
-              <form
-                className="users__details-form"
-                autoComplete="off"
-              >
+              <form className="users__details-form" autoComplete="off">
                 <div className="users__avatar">
                   <img
                     className="users__photo"
@@ -132,6 +129,14 @@ const UserProfile = ({
                         }}
                       >
                         Update
+                      </button>
+
+                      <button
+                        className="users__cancel"
+                        type="button"
+                        onClick={() => setShowForms(false)}
+                      >
+                        Cancel
                       </button>
                     </>
                   )}
