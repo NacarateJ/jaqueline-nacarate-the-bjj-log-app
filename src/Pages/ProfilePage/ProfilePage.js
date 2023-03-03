@@ -39,7 +39,7 @@ const ProfilePage = () => {
   // state to set Alert messages
   const [message, setMessage] = useState("");
 
-  
+
   // State to show new posts
   // const [posts, setPosts] = useState([]);
   // const [showNewPost, setShowNewPost] = useState(false);
@@ -174,7 +174,7 @@ const ProfilePage = () => {
       }, 3000);
     } catch (error) {
       console.log(error);
-      setMessage("Error loading video. Please check if you provided a Technique Name and a Description.");
+      setMessage("Error loading video. Please check if you provided the Technique Name and the Description.");
 
       setTimeout(() => {
         setMessage("");
@@ -245,7 +245,7 @@ const ProfilePage = () => {
 
   return (
     <div className="container">
-      <Alerts message={message} setMessage={setMessage} tipo="erro" />
+      <Alerts message={message} setMessage={setMessage} type="error" />
 
       {/* User profile page with video gallery */}
       <section
