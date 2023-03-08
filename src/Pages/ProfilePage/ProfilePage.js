@@ -39,23 +39,12 @@ const ProfilePage = () => {
   const [message, setMessage] = useState("");
 
 
-  // State to show new posts
-  // const [posts, setPosts] = useState([]);
-  // const [showNewPost, setShowNewPost] = useState(false);
-
   // State for users
   // const [users, setUsers] = useState([]);
 
   const videoRef = useRef();
 
   const navigate = useNavigate();
-
-
-  // function refreshPage() {
-  //   setTimeout(() => {
-  //     window.location.reload();
-  //   }, 3000);
-  // }
 
   // Functio to hide and show user's profile page and form to upload new video
   const handleUpload = (event) => {
@@ -153,17 +142,9 @@ const ProfilePage = () => {
           videoRef.current.src = "";
           videoRef.current.style.display = "none";
           event.target.reset();
-          // setVideos([...videos, response.data]);
-          // setHeroVideo([...videos, response.data]);
         });
 
       setMessage("Video loaded!");
-
-      // setPosts();
-
-      // setShowNewPost(true);
-
-      // refreshPage();
 
       setIsUserShowValid(true);
       setIsUploadHideValid(false);
@@ -180,23 +161,6 @@ const ProfilePage = () => {
       }, 3000);
     }
   };
-
-  // useEffect(() => {
-  //   const loadPosts = async () => {
-  //     try {
-  //       const reload = await axios.get(`${BACK_END}/videos`);
-
-  //       setPosts(reload.data);
-  //     } catch (error) {
-  //       if (error.response) {
-  //         return setMessage(error.response.data.error);
-  //       }
-
-  //       setMessage("Ops, something went wrong. Please try again");
-  //     }
-  //   };
-  //   loadPosts();
-  // }, []);
 
 const handleUpdate = (formData, videoId) => {
  const values = {
@@ -227,8 +191,6 @@ console.log(values);
       data: { deletedVideoId },
     } = await axios.delete(`${BACK_END}/videos/${videoId}`);
     setVideos(videos.filter((video) => video.id !== deletedVideoId));
-
-    // refreshPage();
 
     navigate("/profile");
 
@@ -269,7 +231,6 @@ console.log(values);
               handleUpdate={handleUpdate}
               handleDelete={handleDelete}
               editVideoId={editVideoId}
-              // setMessage={setMessage}
             />
           )}
         </div>
@@ -286,18 +247,13 @@ console.log(values);
             ${!isUploadHideValid ? "" : "upload--show"} `}
       >
         <div>
-          {/* {showNewPost && ( */}
           <FormAddVideo
             handleSubmit={handleSubmit}
             handleVideo={handleVideo}
             videoRef={videoRef}
             setIsUserShowValid={setIsUserShowValid}
             setIsUploadHideValid={setIsUploadHideValid}
-            // users={users}
-            // setShowNewPost={setShowNewPost}
-            // setPosts={setPosts}
           />
-          {/* // )} */}
         </div>
       </section>
     </div>

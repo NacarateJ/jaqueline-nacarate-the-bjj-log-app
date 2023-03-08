@@ -8,9 +8,6 @@ const FormAddVideo = ({
   videoRef,
   setIsUserShowValid,
   setIsUploadHideValid,
-  // setShowNewPost,
-  // setPosts,
-  // users,
 }) => {
 
   const formRef = useRef(null);
@@ -95,10 +92,6 @@ const FormAddVideo = ({
       </label> */}
             <br />
             <button
-              // onClick={(event) => {
-              //   setShowNewPost(event);
-              //   setPosts(event);
-              // }}
               className="form__btn"
               type="submit"
             >

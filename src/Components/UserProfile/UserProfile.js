@@ -8,7 +8,6 @@ const UserProfile = ({
   editUserId,
   handleEdit,
   handleUpdate,
-  // handleDelete,
 }) => {
   const [selectedOption, setSelectedOption] = useState("");
   const [belt, setBelt] = useState(localStorage.getItem("belt") || "");
