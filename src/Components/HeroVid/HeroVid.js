@@ -14,10 +14,15 @@ const HeroVid = ({
   handleUpdate,
   handleDelete,
 }) => {
-const [isEditMode, setIsEditMode] = useState(false);
-const [editing, setEditing] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [editing, setEditing] = useState(false);
 
-
+  const handleUpdateClick = (event, videoId) => {
+    event.preventDefault();
+    const form = event.target.closest("form");
+    const formData = new FormData(form);
+    handleUpdate(formData, videoId);
+  };
 
   return (
     <main className="hero">
@@ -27,9 +32,6 @@ const [editing, setEditing] = useState(false);
       <form
         className="hero__form"
         autoComplete="off"
-        onSubmit={(event) => {
-          handleUpdate(event, video.id);
-        }}
       >
         <textarea
           readOnly={!editing}
@@ -63,6 +65,9 @@ const [editing, setEditing] = useState(false);
               <button
                 className="update"
                 type="submit"
+                onClick={(event) => {
+                  handleUpdateClick(event, video.id);
+                }}
               >
                 <RxUpdate className="hero__but-icon" />
               </button>
@@ -70,13 +75,16 @@ const [editing, setEditing] = useState(false);
               <button
                 className="cancel"
                 type="button"
-                onClick={() => setIsEditMode(false)}
+                onClick={() => {
+                  setIsEditMode(false);
+                }}
               >
                 <ImCancelCircle className="hero__but-icon" />
               </button>
 
               <button
                 className="delete"
+                type="button"
                 onClick={(event) => handleDelete(event, video.id)}
               >
                 <RiDeleteBin2Line className="hero__but-icon" />

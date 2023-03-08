@@ -2,7 +2,6 @@ import "./ProfilePage.scss";
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import Alerts from "../../Components/Alerts/Alerts";
-// import UserProfile from "../../Components/UserProfile/UserProfile";`
 import Users from "../Users/Users";
 import SearchBar from "../../Components/SearchBar/SearchBar";
 import FormAddVideo from "../../Components/FormAddVideo/FormAddVideo";
@@ -199,31 +198,28 @@ const ProfilePage = () => {
   //   loadPosts();
   // }, []);
 
-  const handleUpdate = (event, videoId) => {
-    event.preventDefault();
-    const values = {
-      technique_name: event.target.techniqueName.value,
-      description: event.target.description.value,
-    };
-
-    axios.patch(`${BACK_END}/videos/${videoId}`, values).then((response) => {
+const handleUpdate = (formData, videoId) => {
+ const values = {
+   technique_name: formData.get("techniqueName"),
+   description: formData.get("description"),
+ };
+console.log(values);
+  axios.patch(`${BACK_END}/videos/${videoId}`, values).then((response) => {
       const updatedVideos = videos.map((video) =>
         video.id === response.data.id ? response.data : video
       );
-      
+
       setVideos(updatedVideos);
       setEditVideoId(null);
     });
-    setMessage("Saving your changes...");
 
-    setMessage("Saved!");
+  setMessage("Saved!");
 
-    // refreshPage();
+  setTimeout(() => {
+    setMessage("");
+  }, 3000);
+};
 
-    setTimeout(() => {
-      setMessage("");
-    }, 3000);
-  };
 
   const handleDelete = async (event, videoId) => {
     event.preventDefault();
@@ -245,7 +241,7 @@ const ProfilePage = () => {
 
   return (
     <div className="container">
-      <Alerts message={message} setMessage={setMessage} type="error" />
+      <Alerts message={message} />
 
       {/* User profile page with video gallery */}
       <section
@@ -254,7 +250,7 @@ const ProfilePage = () => {
       >
         <div className="head">
           <div>
-            <Users />
+            <Users setMessage={setMessage} />
             <button
               className="upload-video-but"
               type="text"
@@ -273,6 +269,7 @@ const ProfilePage = () => {
               handleUpdate={handleUpdate}
               handleDelete={handleDelete}
               editVideoId={editVideoId}
+              // setMessage={setMessage}
             />
           )}
         </div>

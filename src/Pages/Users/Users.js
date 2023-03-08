@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 
 const USERS_API = `${process.env.REACT_APP_BACKEND_URL}/users`;
 
-const Users = () => {
+const Users = ({ setMessage }) => {
   const [users, setUsers] = useState([]);
   const [editUserId, setEditUserId] = useState(null);
 
@@ -36,12 +36,12 @@ const Users = () => {
     setEditUserId(userId);
   };
 
-const handleUpdate = (formData, userId) => {
-  const values = {
-    name: formData.get("userName"),
-    email: formData.get("userEmail"),
-    belt_color: formData.get("userBeltColor"),
-  };
+  const handleUpdate = (formData, userId) => {
+    const values = {
+      name: formData.get("userName"),
+      email: formData.get("userEmail"),
+      belt_color: formData.get("userBeltColor"),
+    };
     axios.patch(`${USERS_API}/${userId}`, values).then((response) => {
       const updatedUsers = users.map((user) =>
         user.id === response.data.id ? response.data : user
@@ -49,24 +49,15 @@ const handleUpdate = (formData, userId) => {
       setUsers(updatedUsers);
       setEditUserId(null);
     });
-};
+    
+    setMessage("Saved!");
 
 
-  // const handleUpdate = (event, userId) => {
-  //   event.preventDefault();
-  //   const values = {
-  //     name: event.target.userName.value,
-  //     email: event.target.userEmail.value,
-  //     belt_color: event.target.userBeltColor.value,
-  //   };
-  //   axios.patch(`${USERS_API}/${userId}`, values).then((response) => {
-  //     const updatedUsers = users.map((user) =>
-  //       user.id === response.data.id ? response.data : user
-  //     );
-  //     setUsers(updatedUsers);
-  //     setEditUserId(null);
-  //   });
-  // };
+    setTimeout(() => {
+      setMessage("");
+    }, 3000);
+  };
+
 
   //   Function to delete users
   //     const handleDelete = async (event, userId) => {
@@ -80,16 +71,13 @@ const handleUpdate = (formData, userId) => {
   //     );
   //   };
 
-
   return (
-      <UserProfile
-        users={users}
-        handleEdit={handleEdit}
-        handleUpdate={handleUpdate}
-        editUserId={editUserId}
-        // handleDelete={handleDelete}
-      />
-   
+    <UserProfile
+      users={users}
+      handleEdit={handleEdit}
+      handleUpdate={handleUpdate}
+      editUserId={editUserId}
+    />
   );
 };
 

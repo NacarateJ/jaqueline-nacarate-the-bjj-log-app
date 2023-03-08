@@ -3,7 +3,7 @@ import "../Alerts/Alerts.scss";
 import React, { useRef, useEffect, memo } from "react";
 
 
-const Alerts = ({ message, type, setMessage }) => {
+const Alerts = ({ message }) => {
    const alertEl = useRef();
 
    useEffect(() => {
@@ -15,7 +15,7 @@ const Alerts = ({ message, type, setMessage }) => {
    }, [message]);
 
    return (
-     <div className={`alert ${type}`} ref={alertEl}>
+     <div className={`alert`} ref={alertEl}>
        <h1>{message}</h1>
      </div>
    );
