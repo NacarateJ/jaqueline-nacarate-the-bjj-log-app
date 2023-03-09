@@ -23,7 +23,6 @@ const FormAddVideo = ({
 
   return (
     <>
-      <div className="form">
         <div className="form__container-add">
           <button
             className="form__btn-x"
@@ -35,7 +34,7 @@ const FormAddVideo = ({
 
           <form
             ref={formRef}
-            className="form__form"
+            className="form"
             onSubmit={handleSubmit}
             autoComplete="off"
             encType="multipart/form-data"
@@ -79,17 +78,6 @@ const FormAddVideo = ({
             />
 
             <video className="form__new-video" ref={videoRef}></video>
-
-            {/* <label htmlFor="userID">
-        Users:
-        <select name="userID">
-          {users.map((user) => (
-            <option key={user.id} value={user.id}>
-              {user.name}
-            </option>
-          ))}
-        </select>
-      </label> */}
             <br />
             <button
               className="form__btn"
@@ -100,7 +88,6 @@ const FormAddVideo = ({
             <br />
           </form>
         </div>
-      </div>
     </>
   );
 };

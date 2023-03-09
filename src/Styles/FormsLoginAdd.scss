@@ -1,28 +1,22 @@
 @use "./Partials/breakpoints" as *;
 @use "./Partials/colors" as *;
 
-// Login form for mobile
+// Forms for mobile
 .form {
   width: 100%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 
-  &__container,
   &__container-add {
     padding: 1rem;
     border-radius: 1.25rem;
-  }
-
-  &__container-add {
-    margin: 2rem 0;
+     margin: 2rem 0;
     background-color: black;
     display: flex;
     flex-direction: column;
-  }
-
-  &__form {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   }
 
   &__text {
@@ -78,7 +72,7 @@
     display: flex;
     justify-content: flex-end;
   }
-  
+
   &__btn-x-icon {
     color: white;
     font-size: 1.5rem;
@@ -95,39 +89,5 @@
     height: 11.25rem;
     border-radius: 0.5rem;
     display: none;
-  }
-}
-
-// Login form for tablet
-@include medium {
-  .form-login {
-    margin: 8.6rem 0;
-  }
-  // }
-  // .form {
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-  //   // margin: 0 auto;
-
-  //   &__container-add {
-  //     display: flex;
-  //     justify-content: center;
-  //     align-items: center;
-  //     // margin: 0 auto;
-  //   }
-
-  //   &__form {
-  //     display: flex;
-  //     justify-content: center;
-  //     align-items: center;
-  //     // margin: 0 auto;
-  //   }
-}
-
-// Login form for desktop
-@include large {
-  .form-login {
-    margin: 10rem 0;
   }
 }
