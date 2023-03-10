@@ -1,6 +1,8 @@
 import "./UserProfile.scss";
 import Photo from "../../Assets/Images/user.jpg";
 import React, { useState, useEffect } from "react";
+import { RxUpdate } from "react-icons/rx";
+import { ImCancelCircle } from "react-icons/im";
 
 
 const UserProfile = ({
@@ -127,7 +129,7 @@ const UserProfile = ({
                           handleUpdateClick(event, user.id);
                         }}
                       >
-                        Update
+                        <RxUpdate className="users__but-icon" />
                       </button>
 
                       <button
@@ -135,7 +137,7 @@ const UserProfile = ({
                         type="button"
                         onClick={() => setShowForms(false)}
                       >
-                        Cancel
+                        <ImCancelCircle className="users__but-icon" />
                       </button>
                     </>
                   )}

@@ -7,4 +7,8 @@
   border-radius: 0.25rem;
   border: 1px solid $mercury;
   background-color: $alabaster;
+  &:hover {
+    border: 1px solid $silver;
+    background-color: $mercury;
+  }
 }

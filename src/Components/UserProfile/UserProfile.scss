@@ -6,7 +6,7 @@
 .users {
   margin: 1rem;
 
-  &__details {
+  &__details-form {
     display: flex;
   }
   &__photo {
@@ -22,9 +22,21 @@
     align-self: center;
   }
 
+  textarea:focus {
+    outline: none;
+  }
+
   &__name {
+    font-family: "Anek Devanagari";
     font-weight: 600;
     margin: 0;
+    border: none;
+  }
+
+  &__email {
+    font-family: "Anek Devanagari";
+    border: none;
+    
   }
 
   &__belt {
@@ -51,6 +63,16 @@
     background-position-y: center;
     background-position-x: right;
     height: 1.9375rem;
+  }
+
+   &__but-icon {
+    font-size: 1rem;
+  }
+
+  &__update,
+  &__cancel {
+    background-color: white;
+    border: none;
   }
 }
 
@@ -85,8 +107,6 @@
       height: 1.5rem;
       margin-bottom: 0.5rem;
     }
-
-      
   }
 }
 
@@ -114,7 +134,7 @@
     }
 
     &__edit-profile {
-        height: 2.8125rem;
-      }
+      height: 2.8125rem;
+    }
   }
 }
