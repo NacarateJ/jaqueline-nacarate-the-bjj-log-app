@@ -6,7 +6,7 @@ import Logo from "../../Assets/Logo/TheBjjLogAppLogo4.jpg";
 const NavBar = () => {
   return (
     <div className="navbar">
-      <img className="navbar__logo" src={Logo}></img>
+      <img className="navbar__logo" alt="App logo: jiu-jitsu fighters"src={Logo}/>
       <div className="navbar__bars">
         <GrMenu />
       </div>
