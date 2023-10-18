@@ -60,8 +60,9 @@ const UserProfile = ({
   const handleUpdateClick = (event, userId) => {
     event.preventDefault();
     setShowForms(false);
-     const formData = new FormData(event.target.form);
-     handleUpdate(formData, userId);
+    const form = event.target.closest("form");
+    const formData = new FormData(form);
+    handleUpdate(formData, userId);
   };
 
   return (
