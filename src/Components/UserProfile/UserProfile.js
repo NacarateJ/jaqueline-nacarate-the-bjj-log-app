@@ -1,6 +1,11 @@
 import "./UserProfile.scss";
 import Photo from "../../Assets/Images/user.jpg";
-import React, { useState, useEffect } from "react";
+import WhiteBelt from "../../Assets/Images/whiteBelt.jpg";
+import BlueBelt from "../../Assets/Images/blueBelt.jpg";
+import PurpleBelt from "../../Assets/Images/purpleBelt.jpg";
+import BrownBelt from "../../Assets/Images/brownBelt.jpg";
+import BlackBelt from "../../Assets/Images/blackBelt.jpg";
+import React, { useState, useEffect, useMemo } from "react";
 import { RxUpdate } from "react-icons/rx";
 import { ImCancelCircle } from "react-icons/im";
 
@@ -13,22 +18,23 @@ const UserProfile = ({
 }) => {
   const [selectedOption, setSelectedOption] = useState("");
   const [belt, setBelt] = useState(localStorage.getItem("belt") || "");
-  const [showForms, setShowForms] = useState(false);
-  const [editing, setEditing] = useState(false);
-
-  const beltOptions = {
-    White: "whiteBelt.jpg",
-    Blue: "blueBelt.jpg",
-    Purple: "purpleBelt.jpg",
-    Brown: "brownBelt.jpg",
-    Black: "blackBelt.jpg",
-  };
-
-  const colors = ["White", "Blue", "Purple", "Brown", "Black"];
-
   const [borderColor, setBorderColor] = useState(
     localStorage.getItem("borderColor") || ""
   );
+  const [showForms, setShowForms] = useState(false);
+  const [editing, setEditing] = useState(false);
+
+  const beltOptions = useMemo(() => {
+    return {
+      White: "whiteBelt.jpg",
+      Blue: "blueBelt.jpg",
+      Purple: "purpleBelt.jpg",
+      Brown: "brownBelt.jpg",
+      Black: "blackBelt.jpg",
+    };
+  }, []);
+
+  const colors = ["White", "Blue", "Purple", "Brown", "Black"];
 
  const handleBelt = (event) => {
    setSelectedOption(event.target.value);
@@ -98,7 +104,17 @@ const UserProfile = ({
 
                   <img
                     className="users__belt"
-                    src={require(`../../Assets/Images/${belt}`)}
+                    src={
+                      belt === "White"
+                        ? WhiteBelt
+                        : belt === "Blue"
+                        ? BlueBelt
+                        : belt === "Purple"
+                        ? PurpleBelt
+                        : belt === "Brown"
+                        ? BrownBelt
+                        : BlackBelt
+                    }
                     alt="Selected belt color"
                   ></img>
 
