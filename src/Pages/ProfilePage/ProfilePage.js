@@ -1,18 +1,20 @@
 import "./ProfilePage.scss";
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
+import { connect } from "react-redux";
+import { useParams, useNavigate } from "react-router-dom";
 import Alerts from "../../Components/Alerts/Alerts";
 import Users from "../Users/Users";
-import SearchBar from "../../Components/SearchBar/SearchBar";
 import FormAddVideo from "../../Components/FormAddVideo/FormAddVideo";
 import HeroVid from "../../Components/HeroVid/HeroVid";
 import VideoGallery from "../../Components/VideoGallery/VideoGallery";
-import { useParams, useNavigate } from "react-router-dom";
 
 const BACK_END = process.env.REACT_APP_BACKEND_URL;
 
-const ProfilePage = () => {
+const ProfilePage = ({ videos, searchResults, dispatch }) => {
   const params = useParams();
+  const navigate = useNavigate();
+  
   // States to hide and show user's profile page and form to upload new video
   const [isUserShowValid, setIsUserShowValid] = useState(true);
   const [isUploadHideValid, setIsUploadHideValid] = useState(false);
@@ -23,28 +25,18 @@ const ProfilePage = () => {
   // State to edit videos
   const [editVideoId, setEditVideoId] = useState(null);
 
-  // State for all the videos
-  const [videos, setVideos] = useState([]);
-
-  // state to search videos 
-  const [searchResults, setSearchResults] = useState([]);
-
   // State for hero video
   const [heroVideo, setHeroVideo] = useState();
 
   const [allVideos, setAllVideos] = useState([]);
 
-  
   // state to set Alert messages
   const [message, setMessage] = useState("");
-
 
   // State for users
   // const [users, setUsers] = useState([]);
 
   const videoRef = useRef();
-
-  const navigate = useNavigate();
 
   // Functio to hide and show user's profile page and form to upload new video
   const handleUpload = (event) => {
@@ -76,7 +68,7 @@ const ProfilePage = () => {
   const handleChange = (hero) => {
     const videos = allVideos.filter((video) => video.id !== hero.id);
     const selectedVideo = allVideos.find((video) => video.id === hero.id);
-    setVideos(videos);
+    dispatch({ type: "SET_VIDEOS", payload: videos });
     setHeroVideo(selectedVideo);
   };
 
@@ -90,8 +82,8 @@ const ProfilePage = () => {
         const videos = data.filter((video) => video.id !== videoId);
         const heroVideo = data.find((video) => video.id === videoId);
         setAllVideos(data);
-        setVideos(videos);
-        setSearchResults(videos);
+        dispatch({ type: "SET_VIDEOS", payload: videos });
+        dispatch({ type: "SET_SEARCH_RESULTS", payload: videos });
         setHeroVideo(heroVideo);
       } catch (error) {
         console.log("Error", error);
@@ -105,9 +97,7 @@ const ProfilePage = () => {
 
     fetchVideos();
     // fetchUsers();
-  }, [params.videoId]);
-
-
+  }, [params.videoId, dispatch]);
 
   // Posting new Video
   const handleSubmit = async (event) => {
@@ -154,7 +144,9 @@ const ProfilePage = () => {
       }, 3000);
     } catch (error) {
       console.log(error);
-      setMessage("Error loading video. Please check if you provided the Technique Name and the Description.");
+      setMessage(
+        "Error loading video. Please check if you provided the Technique Name and the Description."
+      );
 
       setTimeout(() => {
         setMessage("");
@@ -162,35 +154,37 @@ const ProfilePage = () => {
     }
   };
 
-const handleUpdate = (formData, videoId) => {
- const values = {
-   technique_name: formData.get("techniqueName"),
-   description: formData.get("description"),
- };
-console.log(values);
-  axios.patch(`${BACK_END}/videos/${videoId}`, values).then((response) => {
+  const handleUpdate = (formData, videoId) => {
+    const values = {
+      technique_name: formData.get("techniqueName"),
+      description: formData.get("description"),
+    };
+    console.log(values);
+    axios.patch(`${BACK_END}/videos/${videoId}`, values).then((response) => {
       const updatedVideos = videos.map((video) =>
         video.id === response.data.id ? response.data : video
       );
 
-      setVideos(updatedVideos);
+      dispatch({ type: "SET_VIDEOS", payload: updatedVideos });
       setEditVideoId(null);
     });
 
-  setMessage("Saved!");
+    setMessage("Saved!");
 
-  setTimeout(() => {
-    setMessage("");
-  }, 3000);
-};
-
+    setTimeout(() => {
+      setMessage("");
+    }, 3000);
+  };
 
   const handleDelete = async (event, videoId) => {
     event.preventDefault();
     const {
       data: { deletedVideoId },
     } = await axios.delete(`${BACK_END}/videos/${videoId}`);
-    setVideos(videos.filter((video) => video.id !== deletedVideoId));
+    dispatch({
+      type: "SET_VIDEOS",
+      payload: videos.filter((video) => video.id !== deletedVideoId),
+    });
 
     navigate("/profile");
 
@@ -220,7 +214,6 @@ console.log(values);
             >
               Upload a new video
             </button>
-            <SearchBar videos={videos} setSearchResults={setSearchResults} />
           </div>
 
           {heroVideo && (
@@ -260,4 +253,10 @@ console.log(values);
   );
 };
 
-export default ProfilePage;
+const mapStateToProps = (state) => {
+  return {
+    videos: state.videos,
+  };
+};
+
+export default connect(mapStateToProps)(ProfilePage);
