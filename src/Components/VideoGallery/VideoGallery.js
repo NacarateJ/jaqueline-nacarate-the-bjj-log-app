@@ -1,5 +1,6 @@
 import "./VideoGallery.scss";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import React from "react";
 
 
@@ -33,7 +34,6 @@ const VideoGallery = ({ searchResults, handleChange }) => {
     );
   });
 
-
   // if there are matching videos in searchResults, the content variable will be set to the results array.
   const content = results?.length ? (
     results
@@ -53,4 +53,15 @@ const VideoGallery = ({ searchResults, handleChange }) => {
   );
 };
 
-export default VideoGallery;
+const mapStateToProps = (state) => {
+  return {
+    searchResults: state.searchResults,
+  };
+};
+
+export default connect(mapStateToProps)(VideoGallery);
+
+
+
+
+
