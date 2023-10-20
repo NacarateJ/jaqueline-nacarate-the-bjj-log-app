@@ -36,7 +36,7 @@ const SearchBar = ({ videos, setSearchResults }) => {
           <input
             ref={inputRef}
             className="search__input"
-            placeholder="Search technique name"
+            placeholder="Search..."
             type="text"
             id="search"
           />

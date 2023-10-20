@@ -13,8 +13,8 @@ const NavBar = ({ videos, setSearchResults }) => {
         alt="App logo: jiu-jitsu fighters"
         src={Logo}
       />
-      <SearchBar videos={videos} setSearchResults={setSearchResults} />
       <div className="navbar__bars">
+        <SearchBar videos={videos} setSearchResults={setSearchResults} />
         <GrMenu />
       </div>
     </div>
