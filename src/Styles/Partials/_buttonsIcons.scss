@@ -1,0 +1,11 @@
+@use "../../Styles/Partials/colors" as *;
+
+@mixin icon-size {
+ font-size: 1.5rem;
+}
+
+@mixin buttonIcon-theme {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
