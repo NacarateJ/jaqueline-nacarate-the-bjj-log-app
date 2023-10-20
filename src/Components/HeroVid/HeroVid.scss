@@ -62,7 +62,7 @@
 // Hero video for tablet
 @include medium {
   .hero {
-    margin-bottom: 1rem;
+    margin: 3rem 0 1rem 2rem;
     width: 100%;
 
      &__info, &__info-tec {
@@ -78,10 +78,10 @@
 // Hero video for desktop
 @include large {
   .hero {
-     margin-bottom: 2rem;
+    margin-bottom: 2rem;
 
-     &__info, &__info-tec, &__but-icon {
-    font-size: 1.2rem;
-  }
+    &__info, &__info-tec {
+      font-size: 1.2rem;
+    }
   }
 }

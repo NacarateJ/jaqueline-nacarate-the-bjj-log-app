@@ -86,54 +86,44 @@
 // User profile for tablet
 @include medium {
   .users {
-    margin-top: 2rem;
-    // margin-left: 0;
-    // width: 30%;
-
-//     &__details {
-//       flex-direction: column;
-//     }
-
-//     &__avatar {
-//       display: flex;
-//       justify-content: center;
-//     }
+    margin-top: 3rem;
 
     &__name {
       padding-top: 1rem;
+      font-size: 1.5rem;
     }
-    // &__belt {
-    //   height: 2rem;
-    //   width: 100%;
-    // }
+
+    &__belt, &__edit-but, &__edit-profile {
+      width: 100%;
+    }
   }
 }
 
 // User profile for desktop
-// @include large {
-//   .users {
-//     width: 35%;
+@include large {
+  .users {
 
-//     &__photo {
-//       width: 15rem;
-//       height: 15rem;
-//     }
+    &__photo {
+      width: 15rem;
+      height: 15rem;
+    }
 
-//     &__name {
-//       font-size: 2rem;
-//     }
+    &__name {
+      font-size: 2rem;
+    }
 
-//     &__belt {
-//       height: 2rem;
-//       margin-bottom: 1.3rem;
-//     }
+    &__belt {
+      height: 3rem;
+      margin-bottom: 1.3rem;
+    }
+    
+    &__edit-profile, &__edit-but {
+      font-size: 1.5rem;
+      margin-bottom: 1.3rem;
+    }
 
-//     &__edit-profile {
-//       font-size: 1.5rem;
-//     }
-
-//     &__edit-profile {
-//       height: 2.8125rem;
-//     }
-//   }
-// }
+    &__edit-profile {
+      height: 2.8125rem;
+    }
+  }
+}
