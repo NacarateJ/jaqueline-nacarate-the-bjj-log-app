@@ -1,11 +1,16 @@
 @use "../../Styles/Partials/colors" as *;
+@use "../../Styles/Partials/buttonsIcons" as *;
 
 .search {
   display: flex;
   align-items: center;
 
+  &__but-icon {
+    @include icon-size;
+  }
+  
   &__button {
-  cursor: pointer;
+  @include buttonIcon-theme;
   margin-left: 0.5rem;
   }
 

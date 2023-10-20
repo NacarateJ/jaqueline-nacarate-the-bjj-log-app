@@ -1,6 +1,7 @@
 @use "../../Styles/Partials/breakpoints" as *;
 @use "../../Styles/Partials/colors" as *;
 @use "../../Styles/Partials/buttons" as *;
+@use "../../Styles/Partials/buttonsIcons" as *;
 
 // User profile for mobile
 .users {
@@ -73,13 +74,12 @@
   }
 
    &__but-icon {
-    font-size: 1rem;
+    @include icon-size;
   }
 
   &__update,
   &__cancel {
-    background-color: white;
-    border: none;
+    @include buttonIcon-theme;
   }
 }
 

@@ -43,7 +43,7 @@ const SearchBar = ({ videos, setSearchResults }) => {
         </form>
       )}
       <button className="search__button" onClick={toggleInputVisibility}>
-        <RxMagnifyingGlass />
+        <RxMagnifyingGlass className="search__but-icon" />
       </button>
     </div>
   );

@@ -1,5 +1,6 @@
 @use "../../Styles/Partials/breakpoints" as *;
 @use "../../Styles/Partials/colors" as *;
+@use "../../Styles/Partials/buttonsIcons" as *;
 
 
 // Hero video for mobile
@@ -41,12 +42,12 @@
   &__buttons {
     display: flex;
     justify-content: right;
-       margin: 0 1rem;
+    margin: 0 1rem;
 
   }
 
   &__but-icon {
-    font-size: 1rem;
+    @include icon-size;
   }
 
 }
@@ -55,8 +56,7 @@
 .cancel,
 .edit,
 .delete {
-  background-color: white;
-  border: none;
+  @include buttonIcon-theme;
 }
 
 // Hero video for tablet
