@@ -205,7 +205,7 @@ const ProfilePage = ({ videos, searchResults, dispatch }) => {
             ${isUserShowValid ? "" : "user--hide"} `}
       >
         <div className="head">
-          <div>
+          <div className="uper">
             <Users setMessage={setMessage} />
             <button
               className="upload-video-but"

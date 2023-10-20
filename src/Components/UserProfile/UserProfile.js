@@ -139,23 +139,25 @@ const UserProfile = ({
                         ))}
                       </select>
 
-                      <button
-                        className="users__update"
-                        type="submit"
-                        onClick={(event) => {
-                          handleUpdateClick(event, user.id);
-                        }}
-                      >
-                        <RxUpdate className="users__but-icon" />
-                      </button>
+                      <div>
+                        <button
+                          className="users__update"
+                          type="submit"
+                          onClick={(event) => {
+                            handleUpdateClick(event, user.id);
+                          }}
+                        >
+                          <RxUpdate className="users__but-icon" />
+                        </button>
 
-                      <button
-                        className="users__cancel"
-                        type="button"
-                        onClick={() => setShowForms(false)}
-                      >
-                        <ImCancelCircle className="users__but-icon" />
-                      </button>
+                        <button
+                          className="users__cancel"
+                          type="button"
+                          onClick={() => setShowForms(false)}
+                        >
+                          <ImCancelCircle className="users__but-icon" />
+                        </button>
+                      </div>
                     </>
                   )}
 

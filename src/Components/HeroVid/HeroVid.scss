@@ -4,6 +4,8 @@
 
 // Hero video for mobile
 .hero {
+  margin-top: 2rem;
+  
   &__video-wrapper {
     margin-bottom: 1rem;
   }
@@ -60,7 +62,6 @@
 // Hero video for tablet
 @include medium {
   .hero {
-    margin-top: 2rem;
     margin-bottom: 1rem;
     width: 100%;
 

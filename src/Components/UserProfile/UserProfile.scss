@@ -4,22 +4,23 @@
 
 // User profile for mobile
 .users {
-  margin: 1rem;
+  margin-top: 1rem;
+  width: 100%;
 
-  &__details-form {
+  &__avatar,
+  &__information {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
+
   &__photo {
-    margin-right: 1rem;
     object-fit: cover;
     border-radius: 50%;
-    width: 4rem;
-    height: 4rem;
+    width: 12rem;
+    height: 12rem;
     flex-shrink: 0;
-  }
-
-  &__information {
-    align-self: center;
   }
 
   textarea:focus {
@@ -29,26 +30,29 @@
   &__name {
     font-family: "Anek Devanagari";
     font-weight: 600;
-    margin: 0;
+    font-size: 2rem;
     border: none;
+    text-align: center;
   }
 
   &__email {
     font-family: "Anek Devanagari";
     border: none;
-    
+    text-align: center;
+    font-size: 1rem;
   }
 
   &__belt {
-    width: 100%;
+    width: 80%;
+    height: 2rem;
+    margin-top: 1rem;
   }
 
   &__edit-but {
     @include btn-theme;
     font-size: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 80%;
+    margin-top: 1rem;
   }
 
   select:focus {
@@ -56,6 +60,7 @@
   }
 
   &__edit-profile {
+    @include btn-theme;
     appearance: none;
     text-align: center;
     background-image: url(../../Assets/Icons/drop_down_arrow.svg);
@@ -63,6 +68,8 @@
     background-position-y: center;
     background-position-x: right;
     height: 1.9375rem;
+    width: 80%;
+    margin: 1rem 0 0.5rem 0;
   }
 
    &__but-icon {
@@ -80,61 +87,53 @@
 @include medium {
   .users {
     margin-top: 2rem;
-    margin-left: 0;
-    width: 30%;
+    // margin-left: 0;
+    // width: 30%;
 
-    &__details {
-      flex-direction: column;
-    }
+//     &__details {
+//       flex-direction: column;
+//     }
 
-    &__avatar {
-      display: flex;
-      justify-content: center;
-    }
-
-    &__photo {
-      width: 8rem;
-      height: 8rem;
-      border: 5px solid $blue;
-    }
+//     &__avatar {
+//       display: flex;
+//       justify-content: center;
+//     }
 
     &__name {
       padding-top: 1rem;
-      padding-bottom: 0.4rem;
-      text-align: center;
     }
-    &__belt {
-      height: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
+    // &__belt {
+    //   height: 2rem;
+    //   width: 100%;
+    // }
   }
 }
 
 // User profile for desktop
-@include large {
-  .users {
-    width: 35%;
+// @include large {
+//   .users {
+//     width: 35%;
 
-    &__photo {
-      width: 15rem;
-      height: 15rem;
-    }
+//     &__photo {
+//       width: 15rem;
+//       height: 15rem;
+//     }
 
-    &__name {
-      font-size: 2rem;
-    }
+//     &__name {
+//       font-size: 2rem;
+//     }
 
-    &__belt {
-      height: 2rem;
-      margin-bottom: 1.3rem;
-    }
+//     &__belt {
+//       height: 2rem;
+//       margin-bottom: 1.3rem;
+//     }
 
-    &__edit-profile {
-      font-size: 1.5rem;
-    }
+//     &__edit-profile {
+//       font-size: 1.5rem;
+//     }
 
-    &__edit-profile {
-      height: 2.8125rem;
-    }
-  }
-}
+//     &__edit-profile {
+//       height: 2.8125rem;
+//     }
+//   }
+// }

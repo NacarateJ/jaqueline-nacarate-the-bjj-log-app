@@ -8,15 +8,20 @@
     &--hide{
       display: none;
     }
+
+    .uper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   .upload-video-but {
  @include btn-theme;
     font-size: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 1rem;
+    margin: 1rem 0 1rem 0;
+    width: 80%;
 
   }
 
@@ -28,27 +33,27 @@
     }
   }
 
-  @include medium {
-    .head {
-      display: flex;
-      justify-content: space-between;
-       border-bottom: 1px solid $mercury;
-       margin-right: 2rem;
-       margin-left: 2rem;
-    }
-  }
+  // @include medium {
+  //   .head {
+  //     display: flex;
+  //     justify-content: space-between;
+  //      border-bottom: 1px solid $mercury;
+  //      margin-right: 2rem;
+  //      margin-left: 2rem;
+  //   }
+  // }
 
-  @include large {
-     .head {
-       margin-right: 3rem;
-        margin-left: 3rem;
-        margin-top: 1rem;
-     }
+  // @include large {
+  //    .head {
+  //      margin-right: 3rem;
+  //       margin-left: 3rem;
+  //       margin-top: 1rem;
+  //    }
 
-     .upload-video-but {
-      font-size: 1.5rem;
-    }
-  }
+  //    .upload-video-but {
+  //     font-size: 1.5rem;
+  //   }
+  // }
     
 
   
