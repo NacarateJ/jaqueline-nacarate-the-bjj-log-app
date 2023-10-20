@@ -26,11 +26,11 @@ const UserProfile = ({
 
   const beltOptions = useMemo(() => {
     return {
-      White: "whiteBelt.jpg",
-      Blue: "blueBelt.jpg",
-      Purple: "purpleBelt.jpg",
-      Brown: "brownBelt.jpg",
-      Black: "blackBelt.jpg",
+      White: WhiteBelt,
+      Blue: BlueBelt,
+      Purple: PurpleBelt,
+      Brown: BrownBelt,
+      Black: BlackBelt,
     };
   }, []);
 
@@ -40,7 +40,7 @@ const UserProfile = ({
    setSelectedOption(event.target.value);
 
    if (event.target.value in beltOptions) {
-     setBelt(beltOptions[event.target.value]);
+     setBelt(event.target.value);
      setBorderColor(event.target.value);
    }
  };
@@ -48,9 +48,9 @@ const UserProfile = ({
  useEffect(() => {
    if (belt !== "") {
      localStorage.setItem("belt", belt);
-     setBorderColor(Object.keys(beltOptions).find((key) => beltOptions[key] === belt));
+     setBorderColor(belt);
    }
- }, [belt, beltOptions]);
+ }, [belt]);
 
   const handleEditClick = (event) => {
     event.preventDefault();
@@ -105,17 +105,7 @@ const UserProfile = ({
 
                   <img
                     className="users__belt"
-                    src={
-                      belt === "White"
-                        ? WhiteBelt
-                        : belt === "Blue"
-                        ? BlueBelt
-                        : belt === "Purple"
-                        ? PurpleBelt
-                        : belt === "Brown"
-                        ? BrownBelt
-                        : BlackBelt
-                    }
+                    src={beltOptions[belt]}
                     alt="Selected belt color"
                   ></img>
 
